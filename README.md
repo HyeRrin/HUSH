@@ -1,35 +1,17 @@
-# 4팀- 러쉬코리아 (Beauty Trend Style) (1)
+# HUSH (디저트 판매사이트)
 
-## 팀원
-
-### Front-end
-
-- 강루비, 김대호, 양석문, 주혜린
-
-### Back-end
-
-- 김정훈, 정다영, 정승렬
-
-## 사용한 기술
+## 기술
 
 ### Front-end
-
 - React, Sass
 
 ### Back-end
-
 - Node.js, MySQL, Express
 
-### co-work
+### business-tool
+- slack, trello, notion
 
-- git, slack, trello, notion
-
-## 시연 사진
-
-## hush(디저트)
-
-- 처음회원가입시, 초기 포인트를 제공(100,000원) 이 포인트를 이용해서 결제하기누르면, 포인트가 차감되면서 메인페이지로 이동하고, UI상 포인트차감 보여주기. (검색창 대신 포인트숫자 보여주기)
-
+## 기능구현
 1. 로그인, 회원가입
 
 - 유효성검사 맞으면 메인페이지 이동
@@ -92,5 +74,3 @@
 7. 찜목록 페이지
 
 - 체크박스 기능 구현, 전체 선택, 단일 선택 가능, 선택삭제 가능, 수량 조절 기능 구현
-
-8. navbar, footer
