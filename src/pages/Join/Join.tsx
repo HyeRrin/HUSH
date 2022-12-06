@@ -2,18 +2,28 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Join.scss';
 
+interface UserInfo {
+  email: string;
+  password: any;
+  name: string;
+  address: string;
+}
+
 function Join() {
   const navigate = useNavigate();
+
+  const PW_VALIDATION = /(?=.*[a-zA-ZS])(?=.*?[#?!@$%^&*-]).{8,}/;
 
   const [inputValue, setInputValue] = useState({
     email: '',
     password: '',
     name: '',
     address: '',
-  });
+  } as UserInfo);
+
   const [isCheckEmail, setIsCheckEmail] = useState(false);
 
-  const inputChange = e => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue({ ...inputValue, [e.target.name]: e.target.value });
   };
 
@@ -21,7 +31,7 @@ function Join() {
 
   const isPwValid = PW_VALIDATION.test(password);
 
-  const checkDuplicate = e => {
+  const checkDuplicate = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
 
     fetch('http://192.168.228.223:3001/user/check', {
@@ -45,7 +55,7 @@ function Join() {
       });
   };
 
-  const submitForm = e => {
+  const submitForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!isCheckEmail) {
@@ -72,7 +82,7 @@ function Join() {
           navigate('/login');
         } else if (data.message === 'INVALID_PASSWORD') {
           alert(
-            '영문(대소문자)과 특수문자를 포함한 8자리 이상의 비밀번호를 작성해주세요.'
+            '영문(대소문자)과 특수문자를 포함한 8자리 이상의 비밀번호를 작성해주세요.',
           );
         } else {
           alert('회원가입 실패!');
@@ -92,12 +102,16 @@ function Join() {
             하는 항목입니다.
           </p>
         </div>
-        <form onChange={inputChange} onSubmit={submitForm}>
+        <form onSubmit={submitForm}>
           <div className="join-form">
             <label className="form-label">
               <span className="caution-symbol">*</span>이메일
             </label>
-            <input className="form-input-email input-focus" name="email" />
+            <input
+              onChange={handleChange}
+              className="form-input-email input-focus"
+              name="email"
+            />
             <button className="duplicate-btn" onClick={checkDuplicate}>
               중복확인
             </button>
@@ -108,6 +122,7 @@ function Join() {
             </label>
             <div className="form-password-wrap">
               <input
+                onChange={handleChange}
                 className="form-input-long input-focus"
                 name="password"
                 placeholder="영문 대소문자와 특수문자 포함, 8자리 이상"
@@ -123,13 +138,21 @@ function Join() {
             <label className="form-label">
               <span className="caution-symbol">*</span>이름
             </label>
-            <input className="form-input-long input-focus" name="name" />
+            <input
+              onChange={handleChange}
+              className="form-input-long input-focus"
+              name="name"
+            />
           </div>
           <div className="join-form">
             <label className="form-label">
               <span className="caution-symbol">*</span>주소
             </label>
-            <input className="form-input-long input-focus" name="address" />
+            <input
+              onChange={handleChange}
+              className="form-input-long input-focus"
+              name="address"
+            />
           </div>
           <button className="join-btn">회원가입</button>
         </form>
@@ -139,5 +162,3 @@ function Join() {
 }
 
 export default Join;
-
-const PW_VALIDATION = /(?=.*[a-zA-ZS])(?=.*?[#?!@$%^&*-]).{8,}/;
