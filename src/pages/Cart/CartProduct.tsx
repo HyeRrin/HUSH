@@ -1,5 +1,31 @@
-import React from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import './CartProduct.scss';
+
+interface ProductData {
+  pId: any;
+  cateName: string;
+  pName: string;
+  price: number;
+  quantity: number;
+  url: string;
+  checkBox: number;
+  pStock: number;
+  uId: Number;
+}
+
+interface CartProductProps {
+  id: any;
+  img: string;
+  name: string;
+  category: string;
+  quantity: number;
+  price: number;
+  stock: number;
+  handleSingleChecked: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  checkedList: number[];
+  setProductData: Dispatch<SetStateAction<ProductData[]>>;
+  accessToken: string | null;
+}
 
 function CartProduct({
   id,
@@ -13,8 +39,10 @@ function CartProduct({
   checkedList,
   setProductData,
   accessToken,
-}) {
-  let totalSum = quantity * price;
+}: CartProductProps) {
+  const requestHeaders: HeadersInit = new Headers();
+  requestHeaders.set('authorization', accessToken || 'Token not found');
+  const totalSum: number = quantity * price;
 
   const decreaseQuantity = () => {
     if (quantity <= 1) {
@@ -26,10 +54,8 @@ function CartProduct({
         }`,
         {
           method: 'POST',
-          headers: {
-            authorization: accessToken,
-          },
-        }
+          headers: requestHeaders,
+        },
       )
         .then(response => {
           if (response.ok) {
@@ -56,10 +82,8 @@ function CartProduct({
         }`,
         {
           method: 'POST',
-          headers: {
-            authorization: accessToken,
-          },
-        }
+          headers: requestHeaders,
+        },
       )
         .then(response => {
           if (response.ok) {
@@ -94,9 +118,21 @@ function CartProduct({
         </div>
       </td>
       <td className="product-content-quantity">
-        <button className="quantity-btn minus-btn" onClick={decreaseQuantity} />
+        <button
+          type="button"
+          className="quantity-btn minus-btn"
+          onClick={decreaseQuantity}
+        >
+          -
+        </button>
         <span className="quantity-count">{quantity}</span>
-        <button className="quantity-btn plus-btn" onClick={increaseQuantity} />
+        <button
+          type="button"
+          className="quantity-btn plus-btn"
+          onClick={increaseQuantity}
+        >
+          +
+        </button>
       </td>
       <td className="product-content-price">
         ₩ {price.toLocaleString('ko-KR')}
