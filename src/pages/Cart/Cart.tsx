@@ -6,14 +6,26 @@ import './Cart.scss';
 function Cart() {
   const accessToken = localStorage.getItem('accessToken');
   const navigate = useNavigate();
-  const [productData, setProductData] = useState([]);
-  const [checkedList, setCheckedList] = useState([]);
+  const [productData, setProductData] = useState<ProductData[]>([]);
+  const [checkedList, setCheckedList] = useState<number[]>([]);
+  const requestHeaders: HeadersInit = new Headers();
+  requestHeaders.set('authorization', accessToken || 'Token not found');
+
+  interface ProductData {
+    pId: number;
+    cateName: string;
+    pName: string;
+    price: number;
+    quantity: number;
+    url: string;
+    checkBox: number;
+    pStock: number;
+    uId: Number;
+  }
 
   useEffect(() => {
     fetch('/data/cart.json', {
-      headers: {
-        authorization: accessToken,
-      },
+      headers: requestHeaders,
     })
       .then(response => {
         if (response.ok) {
@@ -29,7 +41,7 @@ function Cart() {
       });
   }, []);
 
-  const handleSingleChecked = e => {
+  const handleSingleChecked = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.checked) {
       setCheckedList([...checkedList, Number(e.target.id)]);
     } else {
@@ -37,9 +49,9 @@ function Cart() {
     }
   };
 
-  const handleAllChecked = e => {
+  const handleAllChecked = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.checked) {
-      let allCheckedList = [];
+      const allCheckedList: number[] = [];
       productData.forEach(el => allCheckedList.push(el.pId));
       setCheckedList(allCheckedList);
     } else {
@@ -47,13 +59,19 @@ function Cart() {
     }
   };
 
+  const checkedQueryString = () => {
+    let checkedProducts = '';
+    for (let i = 0; i < checkedList.length; i += 1) {
+      checkedProducts += `productId=${checkedList[i]}&`;
+    }
+    return checkedProducts.slice(0, -1);
+  };
+
   const deleteChecked = () => {
     if (checkedList.length > 0) {
       fetch(`http://172.20.10.6:3000/cart?${checkedQueryString()}`, {
         method: 'DELETE',
-        headers: {
-          authorization: accessToken,
-        },
+        headers: requestHeaders,
       })
         .then(response => {
           if (response.ok) {
@@ -74,21 +92,13 @@ function Cart() {
   };
 
   let totalPrice = 0;
-  for (let i = 0; i < productData.length; i++) {
-    for (let j = 0; j < checkedList.length; j++) {
+  for (let i = 0; i < productData.length; i += 1) {
+    for (let j = 0; j < checkedList.length; j += 1) {
       if (productData[i].pId === checkedList[j]) {
         totalPrice += productData[i].price * productData[i].quantity;
       }
     }
   }
-
-  const checkedQueryString = () => {
-    let checkedProducts = '';
-    for (let i = 0; i < checkedList.length; i++) {
-      checkedProducts += `productId=${checkedList[i]}&`;
-    }
-    return checkedProducts.slice(0, -1);
-  };
 
   const orderProduct = () => {
     if (checkedList.length > 0) {
@@ -147,7 +157,11 @@ function Cart() {
         </div>
       )}
       {productData.length > 0 && (
-        <button className="cart-delete-btn" onClick={deleteChecked}>
+        <button
+          type="button"
+          className="cart-delete-btn"
+          onClick={deleteChecked}
+        >
           선택 삭제
         </button>
       )}
@@ -175,10 +189,18 @@ function Cart() {
         </li>
       </ul>
       <div>
-        <button className="cart-btn shop-btn" onClick={() => navigate('/main')}>
+        <button
+          type="button"
+          className="cart-btn shop-btn"
+          onClick={() => navigate('/main')}
+        >
           쇼핑 계속하기
         </button>
-        <button className="cart-btn pay-btn" onClick={orderProduct}>
+        <button
+          type="button"
+          className="cart-btn pay-btn"
+          onClick={orderProduct}
+        >
           주문하기
         </button>
       </div>
