@@ -4,18 +4,28 @@ import './Login.scss';
 
 function Login() {
   const navigate = useNavigate();
+
   const [inputValue, setInputValue] = useState({
     email: '',
     password: '',
   });
 
-  const inputChange = e => {
+  interface ErrorMessage {
+    [key: string]: string;
+  }
+
+  const ERROR_MSG: ErrorMessage = {
+    WRONG_EMAIL: '이메일을 다시 작성해주세요.',
+    WRONG_PASSWORD: '비밀번호를 다시 작성해주세요.',
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue({ ...inputValue, [e.target.name]: e.target.value });
   };
 
   const { email, password } = inputValue;
 
-  const submitForm = e => {
+  const submitForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     fetch('http://10.58.2.130:3001/users/signin', {
       method: 'POST',
@@ -23,8 +33,8 @@ function Login() {
         'Content-Type': 'application/json;charset=utf-8',
       },
       body: JSON.stringify({
-        email: email,
-        password: password,
+        email,
+        password,
       }),
     })
       .then(response => response.json())
@@ -48,9 +58,19 @@ function Login() {
   return (
     <div className="login">
       <h1 className="login-title">로그인</h1>
-      <form className="login-form" onChange={inputChange} onSubmit={submitForm}>
-        <input className="login-input" name="email" placeholder="이메일" />
-        <input className="login-input" name="password" placeholder="비밀번호" />
+      <form onSubmit={submitForm} className="login-form">
+        <input
+          onChange={handleChange}
+          className="login-input"
+          name="email"
+          placeholder="이메일"
+        />
+        <input
+          onChange={handleChange}
+          className="login-input"
+          name="password"
+          placeholder="비밀번호"
+        />
         <input
           type="checkbox"
           id="saveEmail"
@@ -69,8 +89,3 @@ function Login() {
 }
 
 export default Login;
-
-const ERROR_MSG = {
-  WRONG_EMAIL: '이메일을 다시 작성해주세요.',
-  WRONG_PASSWORD: '비밀번호를 다시 작성해주세요.',
-};
