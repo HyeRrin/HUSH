@@ -23,7 +23,6 @@ function Main() {
     fetch('/data/slider.json')
       .then(res => res.json())
       .then(data => {
-        console.log(data);
         setSlider(data);
       });
   }, []);
@@ -47,12 +46,7 @@ function Main() {
   return (
     <div className="main-warpper">
       <div className="main-visual">
-        <Slider
-          sliders={sliders}
-          slideRef={slideRef}
-          count={counter}
-          handleSlider={handleSlider}
-        />
+        <Slider sliders={sliders} slideRef={slideRef} count={counter} />
       </div>
       <Review />
       <Banner />
