@@ -12,7 +12,7 @@ function Cart() {
   requestHeaders.set('authorization', accessToken || 'Token not found');
 
   interface ProductData {
-    pId: number;
+    pId: any;
     cateName: string;
     pName: string;
     price: number;
