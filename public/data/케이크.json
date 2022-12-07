@@ -2,88 +2,80 @@
   {
     "id": 1,
     "name": "가니22211",
-    "price": "3000",
-    "stock": "1",
+    "price": 3000,
+    "stock": 1,
     "thumbnail_image_url": "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y2FrZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60",
     "categoty_name": "초콜릿",
-    "create_at": "2022년 06월 07일",
-    "update_at": "미사용 데이터"
+    "create_at": "2022년 06월 07일"
   },
 
   {
     "id": 2,
     "name": "미니쉘wwsss",
-    "price": "2500",
-    "stock": "1",
+    "price": 2500,
+    "stock": 1,
     "thumbnail_image_url": "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y2FrZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60",
     "categoty_name": "초콜릿",
-    "create_at": "2022년 06월 07일",
-    "update_at": "미사용 데이터"
+    "create_at": "2022년 06월 07일"
   },
 
   {
     "id": 3,
     "name": "카카오99%",
-    "price": "2500",
-    "stock": "2",
+    "price": 2500,
+    "stock": 2,
     "thumbnail_image_url": "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y2FrZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60",
     "categoty_name": "초콜릿",
-    "create_at": "2022년 06월 07일",
-    "update_at": "미사용 데이터"
+    "create_at": "2022년 06월 07일"
   },
 
   {
     "id": 4,
     "name": "석기시대",
-    "price": "3400",
-    "stock": "1",
+    "price": 3400,
+    "stock": 1,
     "thumbnail_image_url": "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y2FrZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60",
     "categoty_name": "초콜릿",
-    "create_at": "2022년 06월 07일",
-    "update_at": "미사용 데이터"
+    "create_at": "2022년 06월 07일"
   },
 
   {
     "id": 5,
     "name": "석기시대",
-    "price": "3400",
-    "stock": "1",
+    "price": 3400,
+    "stock": 1,
     "thumbnail_image_url": "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y2FrZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60",
     "categoty_name": "초콜릿",
-    "create_at": "2022년 06월 07일",
-    "update_at": "미사용 데이터"
+    "create_at": "2022년 06월 07일"
   },
 
   {
     "id": 6,
     "name": "석기시대",
-    "price": "3400",
-    "stock": "1",
+    "price": 3400,
+    "stock": 1,
     "thumbnail_image_url": "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y2FrZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60",
     "categoty_name": "초콜릿",
-    "create_at": "2022년 06월 07일",
-    "update_at": "미사용 데이터"
+    "create_at": "2022년 06월 07일"
   },
 
   {
     "id": 7,
     "name": "석기시대",
-    "price": "3400",
-    "stock": "1",
+    "price": 3400,
+    "stock": 1,
     "thumbnail_image_url": "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y2FrZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60",
     "categoty_name": "초콜릿",
-    "create_at": "2022년 06월 07일",
-    "update_at": "미사용 데이터"
+    "create_at": "2022년 06월 07일"
   },
 
   {
     "id": 8,
     "name": "석기시대",
-    "price": "3400",
-    "stock": "1",
+    "price": 3400,
+    "stock": 1,
     "thumbnail_image_url": "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y2FrZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60",
     "categoty_name": "초콜릿",
-    "create_at": "2022년 06월 07일",
-    "update_at": "미사용 데이터"
+    "create_at": "2022년 06월 07일"
   }
 ]
