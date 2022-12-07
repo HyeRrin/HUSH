@@ -3,7 +3,11 @@ import useScrollFadeIn from '../../hooks/useScrollFadeIn';
 import './Banner.scss';
 
 function Banner() {
-  const animatedItem = {
+  interface AnimatedItem {
+    [key: number]: any;
+  }
+
+  const animatedItem: AnimatedItem = {
     0: useScrollFadeIn('up', 1, 0),
     1: useScrollFadeIn('up', 1, 0.2),
   };
