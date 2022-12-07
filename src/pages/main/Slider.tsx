@@ -1,11 +1,23 @@
 import React from 'react';
 import './Slider.scss';
 
-function Slider({ sliders, slideRef, count, handleSlider }) {
+interface SliderProps {
+  sliders: any[];
+  slideRef: any;
+  count: number;
+}
+
+interface SliderType {
+  id: number;
+  src: string;
+  alt: string;
+}
+
+function Slider({ sliders, slideRef, count }: SliderProps) {
   return (
     <>
       <div ref={slideRef} className="main-slider-wrap">
-        {sliders.map(slider => (
+        {sliders.map((slider: SliderType) => (
           <div
             key={slider.id}
             className={`${'main-slider-box'} ${
