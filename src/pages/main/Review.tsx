@@ -3,9 +3,23 @@ import useScrollFadeIn from '../../hooks/useScrollFadeIn';
 import './Review.scss';
 
 function Review() {
+  interface Review {
+    id: number;
+    title: string;
+    imgOn: string;
+    imgOff: string;
+    content: string;
+    userId: string;
+    date: string;
+  }
+
+  interface AnimatedItem {
+    [key: number]: any;
+  }
+
   const [reviews, setReviews] = useState([]);
 
-  const animatedItem = {
+  const animatedItem: AnimatedItem = {
     0: useScrollFadeIn('right', 1, 0),
     1: useScrollFadeIn('right', 1, 0.2),
     2: useScrollFadeIn('down', 1, 0.3),
@@ -25,7 +39,7 @@ function Review() {
     <div className="main-review">
       <div className="contain">
         <ul>
-          {reviews.map((review, index) => (
+          {reviews.map((review: Review, index) => (
             <li key={review.id} {...animatedItem[index]}>
               <div className="box">
                 <h2>{review.title}</h2>
