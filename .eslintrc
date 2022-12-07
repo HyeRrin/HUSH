@@ -1,7 +1,6 @@
 {
   "env": {
     "browser": true,
-    "es5": true,
     "node": true
   },
   "extends": ["airbnb", "eslint:recommended", "plugin:prettier/recommended"],
@@ -9,6 +8,12 @@
     "react/jsx-filename-extension": [
       2,
       { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
+    ],
+    "jsx-a11y/label-has-associated-control": [
+      2,
+      {
+        "labelAttributes": ["htmlFor"]
+      }
     ],
     "prettier/prettier": ["error", { "endOfLine": "auto" }]
   }
