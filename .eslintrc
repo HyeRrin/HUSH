@@ -9,6 +9,7 @@
       2,
       { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
     ],
+    "react/jsx-props-no-spreading": "off",
     "jsx-a11y/label-has-associated-control": [
       2,
       {
