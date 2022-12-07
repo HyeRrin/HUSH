@@ -5,35 +5,11 @@ import Slider from './Slider';
 import Banner from './Banner';
 
 function Main() {
-  const slideRef = useRef();
-  const [count, setCount] = useState(1);
+  const slideRef = useRef<any>();
+  const [counter, setCounter] = useState(1);
   const [sliders, setSlider] = useState([]);
 
-  useEffect(() => {
-    fetch('/data/slider.json')
-      .then(res => res.json())
-      .then(data => {
-        setSlider(data);
-      });
-  }, []);
-
-  useEffect(() => {
-    const interval = setTimeout(() => {
-      setCount(() => {
-        if (count < sliders.length) {
-          setCount(count + 1);
-        } else {
-          setCount(1);
-        }
-      });
-
-      handleSlider(count);
-
-      return () => clearTimeout(interval);
-    }, 3000);
-  });
-
-  const handleSlider = count => {
+  const handleSlider = (count: number) => {
     slideRef.current.style.transition = 'all 0.5s ease-in-out';
 
     if (count >= sliders.length) {
@@ -43,13 +19,38 @@ function Main() {
     }
   };
 
+  useEffect(() => {
+    fetch('/data/slider.json')
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        setSlider(data);
+      });
+  }, []);
+
+  useEffect(() => {
+    const interval = setTimeout(() => {
+      setCounter((): any => {
+        if (counter < sliders.length) {
+          setCounter(counter + 1);
+        } else {
+          setCounter(1);
+        }
+      });
+
+      handleSlider(counter);
+
+      return () => clearTimeout(interval);
+    }, 3000);
+  });
+
   return (
     <div className="main-warpper">
       <div className="main-visual">
         <Slider
           sliders={sliders}
           slideRef={slideRef}
-          count={count}
+          count={counter}
           handleSlider={handleSlider}
         />
       </div>
