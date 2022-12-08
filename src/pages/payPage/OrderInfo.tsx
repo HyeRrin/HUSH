@@ -1,12 +1,20 @@
 import React from 'react';
 
+interface OrderInfoProps {
+  choiceMessages: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+  inputMessages: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  isOrderInput: boolean;
+  orderMessages: string;
+  address: string;
+}
+
 function OrderInfo({
   choiceMessages,
   isOrderInput,
   inputMessages,
   orderMessages,
   address,
-}) {
+}: OrderInfoProps) {
   return (
     <div>
       <div className="order-info">
