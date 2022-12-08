@@ -1,6 +1,7 @@
 [
   {
     "id": 1,
+    "name": "김대호",
     "email": "eogh773@naver.com",
     "password": "Eogh12!",
     "address": "서울특별시 동작구 상도동 356-6 1층 101호",
@@ -10,6 +11,7 @@
   },
   {
     "id": 2,
+    "name": "강루비",
     "email": "rubi0023@gamil.com",
     "password": "Rubi3001!",
     "address": "서울특별시 강남구 테혜란로 427 10층",
@@ -19,8 +21,19 @@
   },
   {
     "id": 3,
+    "name": "주혜린",
     "email": "hyerin@daum.net",
     "password": "Hyerin22@",
+    "address": "제주특별자치도 한경면 용수리 4379-2",
+    "point": "100,000",
+    "create_at": "2022년 8월 30일 12시 04분",
+    "update_at": "미사용 데이터"
+  },
+  {
+    "id": 4,
+    "name": "양석문",
+    "email": "sm4545@daum.net",
+    "password": "sm19222@",
     "address": "제주특별자치도 한경면 용수리 4379-2",
     "point": "100,000",
     "create_at": "2022년 8월 30일 12시 04분",
