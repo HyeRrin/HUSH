@@ -6,68 +6,54 @@ import TotalOrder from './TotalOrder';
 import './PayPage.scss';
 
 function PayPage() {
-  const [check, setCheck] = useState(false);
+  const requestHeaders: HeadersInit = new Headers();
+  const accessToken = localStorage.getItem('accessToken');
+  requestHeaders.set('authorization', accessToken || 'Token not found');
 
-  const isCheck = e => {
+  const location = useLocation();
+  const [check, setCheck] = useState(false);
+  const [selecter, setSelecter] = useState<number>(0);
+  const [orderMessages, setOrderMessages] = useState('');
+  const [isOrderInput, setIsOrderInput] = useState<boolean>(false);
+  const [userData, setUserData] = useState<any>([]);
+  const [productData, setProductData] = useState([]);
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  const { product_id } = location.state;
+  const { email, name, address } = userData;
+
+  const isCheck = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCheck(e.target.checked);
   };
 
-  const [selecter, setSelecter] = useState('');
-  const [orderMessages, setOrderMessages] = useState('');
-  const [isOrderInput, setIsOrderInput] = useState(false);
-
-  const choiceMessages = e => {
+  const choiceMessages = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelecter(e.target.selectedIndex);
     setOrderMessages(e.target.value);
   };
 
-  const inputMessages = e => {
+  const inputMessages = (e: React.ChangeEvent<HTMLInputElement>) => {
     setOrderMessages(e.target.value);
   };
 
   useEffect(() => {
-    selecter === 4 ? setIsOrderInput(true) : setIsOrderInput(false);
+    if (selecter === 4) setIsOrderInput(true);
+    else setIsOrderInput(false);
   }, [choiceMessages]);
-
-  const location = useLocation();
-  const { product_id } = location.state;
-
-  const [userData, setUserData] = useState([]);
-  const [productData, setProductData] = useState([]);
-  const { email, name, address } = userData;
-  const accessToken = localStorage.getItem('accessToken'); //로그인 시 발행 토큰
-
-  const checkedQueryString = () => {
-    let checkedProducts = '';
-    for (let i = 0; i < product_id.length; i++) {
-      checkedProducts += `productId=${product_id[i]}&`;
-    }
-    return checkedProducts.slice(0, -1);
-  };
-
-  useEffect(() => {
-    fetch('./data/users.json', {
-      headers: {
-        authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo2LCJpYXQiOjE2NjQwMDk3ODR9.nvQGE9HLe8n-JCgqqRk3O-2dGEujzQhWIgm0WyCKN60',
-      },
-    })
-      .then(res => res.json())
-      .then(data => {
-        setUserData(data.message);
-      });
-  }, []);
 
   useEffect(() => {
     fetch('./data/products.json', {
-      headers: {
-        authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo2LCJpYXQiOjE2NjQwMDk3ODR9.nvQGE9HLe8n-JCgqqRk3O-2dGEujzQhWIgm0WyCKN60',
-      },
+      headers: requestHeaders,
     })
       .then(res => res.json())
       .then(data => {
-        setProductData(data.message);
+        setProductData(data);
+      });
+
+    fetch('./data/users.json', {
+      headers: requestHeaders,
+    })
+      .then(res => res.json())
+      .then(data => {
+        setUserData(data);
       });
   }, []);
 
@@ -103,7 +89,6 @@ function PayPage() {
         check={check}
         orderMessages={orderMessages}
         address={address}
-        testProductId={testProductId}
         productData={productData}
         product_id={product_id}
       />
