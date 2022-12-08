@@ -2,16 +2,26 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './ProductList.scss';
 
-const ProductList = ({ product }) => {
+interface ProductLists {
+  id: number;
+  name: string;
+  price: number;
+  stock: number;
+  thumbnail_image_url: string;
+  category_name: string;
+}
+
+function ProductList(product: ProductLists) {
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   const { id, stock, name, thumbnail_image_url, price, category_name } =
     product;
 
-  // if (Object.keys(product).length === 0) return <>Loading...</>;
+  if (Object.keys(product).length === 0) return <>Loading...</>;
 
   return (
     <div
       className={`product-product-inner-box ${
-        stock === '0' ? 'product-sold-out' : ''
+        stock === 0 ? 'product-sold-out' : ''
       }`}
     >
       <Link key={id} to={`/detail/${id}`} className="product-link">
@@ -30,6 +40,6 @@ const ProductList = ({ product }) => {
       </Link>
     </div>
   );
-};
+}
 
 export default ProductList;
