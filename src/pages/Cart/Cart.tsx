@@ -4,12 +4,13 @@ import CartProduct from './CartProduct';
 import './Cart.scss';
 
 function Cart() {
+  const requestHeaders: HeadersInit = new Headers();
   const accessToken = localStorage.getItem('accessToken');
+  requestHeaders.set('authorization', accessToken || 'Token not found');
+
   const navigate = useNavigate();
   const [productData, setProductData] = useState<ProductData[]>([]);
   const [checkedList, setCheckedList] = useState<number[]>([]);
-  const requestHeaders: HeadersInit = new Headers();
-  requestHeaders.set('authorization', accessToken || 'Token not found');
 
   interface ProductData {
     pId: any;
