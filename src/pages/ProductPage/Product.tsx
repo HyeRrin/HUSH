@@ -4,21 +4,11 @@ import ProductList from './ProductList';
 import Dropdown from './ProductDropdown';
 import './Product.scss';
 
-interface ProductLists {
-  id: number;
-  name: string;
-  price: number;
-  stock: number;
-  thumbnail_image_url: string;
-  categoty_name: string;
-  create_at: string;
-}
-
 const TAB_LIST = ['all', '초콜릿', '캔디', '쿠키', '젤리', '케이크'];
 
 function Product() {
   const [currTab, setCurrTab] = useState('all');
-  const [productLists, setProductLists] = useState<ProductLists[]>([]);
+  const [productLists, setProductLists] = useState<any[]>([]);
   const [dropdownMenu, setDropDownMenu] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const offset = searchParams.get('offset');
@@ -131,7 +121,7 @@ function Product() {
           {productLists.map(product => {
             return (
               <div className="detail-product-outer-cont" key={product.id}>
-                <ProductList product={product} />
+                <ProductList {...product} />
               </div>
             );
           })}
