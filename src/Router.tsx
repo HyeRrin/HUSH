@@ -12,7 +12,7 @@ import Cart from './pages/Cart/Cart';
 import ScrollToTop from './ScrollToTop';
 import Like from './pages/Like/Like';
 
-const Router = () => {
+function Router() {
   return (
     <BrowserRouter>
       <Nav />
@@ -30,5 +30,5 @@ const Router = () => {
       <Footer />
     </BrowserRouter>
   );
-};
+}
 export default Router;
