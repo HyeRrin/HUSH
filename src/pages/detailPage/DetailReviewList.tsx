@@ -1,46 +1,44 @@
 import React, { useState, useEffect } from 'react';
 import './DetailReviewList.scss';
 
-function DetailReviewList({ listContent }) {
+function DetailReviewList({ content }: any) {
   const [userEmail, setUserEmail] = useState('rkdfnql22@naver.com');
 
   useEffect(() => {
     const id = userEmail.split('@')[0];
     const mail = userEmail.split('@')[1];
 
-    const maskingId = id => {
-      let splitId = id.substring(0, 1);
-
-      for (let i = 1; i < id.length; i++) {
+    const maskingId = (masking: string) => {
+      let splitId = masking.substring(0, 1);
+      for (let i = 1; i < masking.length; i += 1) {
         splitId += '*';
       }
       return splitId;
     };
 
-    const maskingMail = mail => {
+    const maskingMail = (masking: string) => {
       let splitMail = '';
-
-      for (let i = 1; i < mail.length; i++) {
+      for (let i = 1; i < masking.length; i += 1) {
         splitMail += '*';
       }
-      splitMail += mail.substring(mail.length - 1, mail.length);
+      splitMail += masking.substring(masking.length - 1, masking.length);
       return splitMail;
     };
 
-    setUserEmail(maskingId(id) + '@' + maskingMail(mail));
-  }, [userEmail]);
+    setUserEmail(`${maskingId(id)}@${maskingMail(mail)}`);
+  }, []);
 
   const date = new Date();
   const year = date.getFullYear();
-  const month = '0' + (date.getMonth() + 1);
-  const day = ('0' + date.getDate()).slice(-2);
-  const dateStr = year + '-' + month + '-' + day;
+  const month = `0${date.getMonth() + 1}`;
+  const day = `0${String(date.getDate()).slice(-2)}`;
+  const dateStr = `${year} - ${month} - ${day}`;
 
   return (
     <div>
-      {listContent.map((item, key) => {
+      {content.map((item: string) => {
         return (
-          <li key={key}>
+          <li key={item}>
             <div className="box">
               <div className="review-top">
                 <div className="writer">{userEmail}</div>
