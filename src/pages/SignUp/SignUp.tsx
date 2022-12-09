@@ -40,7 +40,7 @@ function SignUp() {
         'Content-Type': 'application/json;charset=utf-8',
       },
       body: JSON.stringify({
-        email: email,
+        email,
       }),
     })
       .then(response => response.json())
@@ -69,10 +69,10 @@ function SignUp() {
         'Content-Type': 'application/json;charset=utf-8',
       },
       body: JSON.stringify({
-        email: email,
-        name: name,
-        password: password,
-        address: address,
+        email,
+        name,
+        password,
+        address,
       }),
     })
       .then(response => response.json())
@@ -104,20 +104,25 @@ function SignUp() {
         </div>
         <form onSubmit={submitForm}>
           <div className="join-form">
-            <label className="form-label">
+            <label htmlFor="signup-email" className="form-label">
               <span className="caution-symbol">*</span>이메일
             </label>
             <input
               onChange={handleChange}
               className="form-input-email input-focus"
               name="email"
+              id="signup-email"
             />
-            <button className="duplicate-btn" onClick={checkDuplicate}>
+            <button
+              type="button"
+              className="duplicate-btn"
+              onClick={checkDuplicate}
+            >
               중복확인
             </button>
           </div>
           <div className="join-form join-form-pw">
-            <label className="form-label">
+            <label htmlFor="signup-password" className="form-label">
               <span className="caution-symbol">*</span>비밀번호
             </label>
             <div className="form-password-wrap">
@@ -126,6 +131,7 @@ function SignUp() {
                 className="form-input-long input-focus"
                 name="password"
                 placeholder="영문 대소문자와 특수문자 포함, 8자리 이상"
+                id="signup-password"
               />
               {password.length > 0 && !isPwValid && (
                 <span className="join-valid-text">
@@ -135,26 +141,30 @@ function SignUp() {
             </div>
           </div>
           <div className="join-form">
-            <label className="form-label">
+            <label htmlFor="signup-name" className="form-label">
               <span className="caution-symbol">*</span>이름
             </label>
             <input
               onChange={handleChange}
               className="form-input-long input-focus"
               name="name"
+              id="signup-name"
             />
           </div>
           <div className="join-form">
-            <label className="form-label">
+            <label htmlFor="signup-address" className="form-label">
               <span className="caution-symbol">*</span>주소
             </label>
             <input
               onChange={handleChange}
               className="form-input-long input-focus"
               name="address"
+              id="signup-address"
             />
           </div>
-          <button className="join-btn">회원가입</button>
+          <button type="button" className="join-btn">
+            회원가입
+          </button>
         </form>
       </div>
     </>
