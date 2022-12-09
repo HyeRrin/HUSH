@@ -2,16 +2,16 @@ import React, { useEffect, useState } from 'react';
 import SearchModal from './SearchModal';
 import './NavModal.scss';
 
-function NavModal({ closeModal }) {
+function NavModal({ closeModal }: any) {
   const [inputValue, setInputValue] = useState('');
-  const [searchList, setSearchList] = useState([]);
+  const [searchList, setSearchList] = useState<any>([]);
   const [isSearchModal, setIsSearchModal] = useState(false);
 
-  const searchInput = e => {
+  const searchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
     setIsSearchModal(true);
   };
-
+  console.log(searchList);
   useEffect(() => {
     if (inputValue.length > 1) {
       fetch(`http://192.168.87.223:3001/search?keyword=${inputValue}`)
@@ -36,7 +36,9 @@ function NavModal({ closeModal }) {
             alt="searchBtn"
           />
         </a>
-        <button onClick={closeModal}>x</button>
+        <button type="button" onClick={closeModal}>
+          x
+        </button>
       </div>
       {isSearchModal && <SearchModal searchList={searchList.message} />}
       <div className="search-footer">
