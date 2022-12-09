@@ -2,16 +2,27 @@ import React, { useState, useEffect } from 'react';
 import LikeProduct from './LikeProduct';
 import './Like.scss';
 
+interface ProductDataType {
+  product_id: number;
+  category_name: string;
+  product_name: string;
+  price: number;
+  quantity: number;
+  thumnail_url: string;
+}
+
 function Like() {
   const accessToken = localStorage.getItem('accessToken');
-  const [productData, setProductData] = useState([]);
-  const [checkedList, setCheckedList] = useState([]);
+  const requestHeaders: HeadersInit = new Headers();
+  requestHeaders.set('authorization', accessToken || 'Token not found');
+
+  const [productData, setProductData] = useState<ProductDataType[]>([]);
+  const [checkedList, setCheckedList] = useState<number[]>([]);
 
   const getData = () => {
-    fetch('http://172.20.10.4:3000/user/like', {
-      headers: {
-        authorization: accessToken,
-      },
+    // fetch('http://172.20.10.4:3000/user/like', {
+    fetch('./data/like.json', {
+      headers: requestHeaders,
     })
       .then(response => {
         if (response.ok) {
@@ -31,7 +42,7 @@ function Like() {
     getData();
   }, []);
 
-  const handleSingleChecked = id => {
+  const handleSingleChecked = (id: any) => {
     if (!checkedList.includes(id)) {
       setCheckedList([...checkedList, id]);
     } else {
@@ -39,14 +50,22 @@ function Like() {
     }
   };
 
-  const handleAllChecked = e => {
+  const handleAllChecked = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.checked) {
-      let newArr = [];
-      productData.forEach(el => newArr.push(el.pId));
+      const newArr: number[] = [];
+      productData.forEach(el => newArr.push(el.product_id));
       setCheckedList(newArr);
     } else {
       setCheckedList([]);
     }
+  };
+
+  const checkedQueryString = () => {
+    let checkedProducts = '';
+    for (let i = 0; i < checkedList.length; i += 1) {
+      checkedProducts += `productId=${checkedList[i]}&`;
+    }
+    return checkedProducts.slice(0, -1);
   };
 
   const deleteChecked = () => {
@@ -55,10 +74,8 @@ function Like() {
         `http://172.20.10.4:3000/user/like/deletelike?${checkedQueryString()}`,
         {
           method: 'DELETE',
-          headers: {
-            authorization: accessToken,
-          },
-        }
+          headers: requestHeaders,
+        },
       )
         .then(response => {
           if (response.ok) {
@@ -72,14 +89,6 @@ function Like() {
     } else {
       alert('삭제할 상품을 선택해주세요!');
     }
-  };
-
-  const checkedQueryString = () => {
-    let checkedProducts = '';
-    for (let i = 0; i < checkedList.length; i++) {
-      checkedProducts += `productId=${checkedList[i]}&`;
-    }
-    return checkedProducts.slice(0, -1);
   };
 
   return (
@@ -106,13 +115,15 @@ function Like() {
         <tbody className="like-product-body">
           {productData.map(product => (
             <LikeProduct
-              key={product.pId}
-              img={product.thumbnail_image_url}
-              name={product.productName}
-              category={product.categoryName}
+              key={product.product_id}
+              img={product.thumnail_url}
+              name={product.product_name}
+              category={product.category_name}
               price={product.price}
-              handleSingleChecked={() => handleSingleChecked(product.pId)}
-              checkedList={checkedList}
+              handleSingleChecked={() =>
+                handleSingleChecked(product.product_id)
+              }
+              {...checkedList}
             />
           ))}
         </tbody>
@@ -124,7 +135,11 @@ function Like() {
         </div>
       )}
       {productData.length > 0 && (
-        <button className="like-delete-btn" onClick={deleteChecked}>
+        <button
+          type="button"
+          className="like-delete-btn"
+          onClick={deleteChecked}
+        >
           선택 삭제
         </button>
       )}
