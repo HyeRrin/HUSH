@@ -2,10 +2,6 @@ import React from 'react';
 import './Footer.scss';
 
 function Footer() {
-  const easterEgg = () => {
-    alert('외쳐 갓승렬!');
-  };
-
   return (
     <div className="footer-wrap">
       <div className="footer-aside">
@@ -19,7 +15,7 @@ function Footer() {
         <div className="footer-left">
           <div className="footer-input">
             <input type="text" placeholder="이메일주소를 입력해주세요" />
-            <button onClick={easterEgg}>구독</button>
+            <button type="button">구독</button>
           </div>
           <p>
             매주 월요일 오후, 구독자님을 위한 제품과 브랜드 이야기를
