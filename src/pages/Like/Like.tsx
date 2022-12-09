@@ -34,7 +34,8 @@ function Like() {
         alert(error);
       })
       .then(data => {
-        setProductData(data.likes);
+        // setProductData(data.likes);
+        setProductData(data);
       });
   };
 
