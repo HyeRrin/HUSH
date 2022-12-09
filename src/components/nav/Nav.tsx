@@ -60,7 +60,7 @@ function Nav() {
           </h1>
           <ul className="nav-menu">
             <li>
-              <Link to="/product">제품</Link>
+              <Link to="/productlist">제품</Link>
             </li>
             <li>
               <Link to="intro">허쉬소개</Link>
@@ -123,13 +123,13 @@ function Nav() {
               <div className="my-page-modal">
                 <ul>
                   <li>
-                    <Link to="/join">회원가입</Link>
+                    <Link to="/signup">회원가입</Link>
                   </li>
                   <li>
-                    <Link to="/login">로그인</Link>
+                    <Link to="/signin">로그인</Link>
                   </li>
                   <li>
-                    <Link to="/detail">찜!</Link>
+                    <Link to="/like">찜!</Link>
                   </li>
                 </ul>
               </div>
