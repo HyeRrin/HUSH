@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Constant from '../../commons/Constant';
 import './SignIn.scss';
 
 function SignIn() {
@@ -9,15 +10,6 @@ function SignIn() {
     email: '',
     password: '',
   });
-
-  interface ErrorMessage {
-    [key: string]: string;
-  }
-
-  const ERROR_MSG: ErrorMessage = {
-    WRONG_EMAIL: '이메일을 다시 작성해주세요.',
-    WRONG_PASSWORD: '비밀번호를 다시 작성해주세요.',
-  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue({ ...inputValue, [e.target.name]: e.target.value });
@@ -39,19 +31,17 @@ function SignIn() {
     })
       .then(response => response.json())
       .then(data => {
-        if (data.message === 'EXCESS_SUCCESS') {
+        if (data.message === Constant.SIGNIN.SIGNIN_SUCCESS.MESSAGE) {
           localStorage.setItem('accessToken', data.accessToken);
-          alert('로그인 성공!');
+          alert(Constant.SIGNIN.SIGNIN_SUCCESS.ALERT);
           navigate('/');
-          return;
         }
-
-        if (ERROR_MSG[data.message]) {
-          alert(ERROR_MSG[data.message]);
-          return;
+        if (Constant.SIGNIN.EMAIL_ERROR.MESSAGE) {
+          alert(Constant.SIGNIN.EMAIL_ERROR.ALERT);
         }
-
-        alert('로그인 실패!');
+        if (Constant.SIGNIN.PASSWORD_ERROR.MESSAGE) {
+          alert(Constant.SIGNIN.PASSWORD_ERROR.ALERT);
+        }
       });
   };
 
@@ -79,9 +69,15 @@ function SignIn() {
         <label htmlFor="saveEmail" className="login-checkbox-label">
           <span>아이디 저장</span>
         </label>
-        <button className="login-btn">로그인</button>
+        <button type="button" className="login-btn">
+          로그인
+        </button>
       </form>
-      <p className="login-link-join" onClick={() => navigate('/join')}>
+      <p
+        role="presentation"
+        className="login-link-join"
+        onClick={() => navigate('/join')}
+      >
         회원가입
       </p>
     </div>

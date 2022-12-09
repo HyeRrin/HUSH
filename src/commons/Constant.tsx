@@ -19,4 +19,19 @@ export default {
         '영문(대소문자)과 특수문자를 포함한 8자리 이상의 비밀번호를 작성해주세요.',
     },
   },
+
+  SIGNIN: {
+    SIGNIN_SUCCESS: {
+      MESSAGE: 'ACCESS_SUCCESS',
+      ALERT: '로그인 성공!',
+    },
+    EMAIL_ERROR: {
+      MESSAGE: 'EMAIL_ERROR',
+      ALERT: '이메일을 다시 작성해주세요.',
+    },
+    PASSWORD_ERROR: {
+      MESSAGE: 'PASSWORD_ERROR',
+      ALERT: '비밀번호를 다시 작성해주세요.',
+    },
+  },
 };
