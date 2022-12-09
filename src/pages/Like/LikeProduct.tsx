@@ -1,7 +1,21 @@
 import React from 'react';
 import './LikeProduct.scss';
 
-function LikeProduct({ img, name, category, price, handleSingleChecked }) {
+interface LikeProductType {
+  img: string;
+  name: string;
+  category: string;
+  price: number;
+  handleSingleChecked: () => void;
+}
+
+function LikeProduct({
+  img,
+  name,
+  category,
+  price,
+  handleSingleChecked,
+}: LikeProductType) {
   return (
     <tr className="like-product-content">
       <td className="product-content-input">
@@ -19,6 +33,7 @@ function LikeProduct({ img, name, category, price, handleSingleChecked }) {
       </td>
       <td className="product-content-select">
         <button
+          type="button"
           className="content-select-btn"
           onClick={() => alert('준비중입니다!')}
         >
