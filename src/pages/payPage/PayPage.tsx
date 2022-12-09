@@ -16,7 +16,7 @@ function PayPage() {
   const [orderMessages, setOrderMessages] = useState('');
   const [isOrderInput, setIsOrderInput] = useState<boolean>(false);
   const [userData, setUserData] = useState<any>([]);
-  const [productData, setProductData] = useState([]);
+  const [productData, setProductData] = useState<any>([]);
   // eslint-disable-next-line @typescript-eslint/naming-convention
   const { product_id } = location.state;
   const { email, name, address } = userData;
@@ -40,7 +40,7 @@ function PayPage() {
   }, [choiceMessages]);
 
   useEffect(() => {
-    fetch('./data/products.json', {
+    fetch('./data/payment.json', {
       headers: requestHeaders,
     })
       .then(res => res.json())
@@ -62,7 +62,7 @@ function PayPage() {
       <h1>주문/결제</h1>
       <div className="product-wrap">
         <h2>제품정보</h2>
-        <ProductInfo productData={productData} />
+        <ProductInfo {...productData} />
       </div>
       <div className="orderer-wrap">
         <h2>주문자 정보</h2>
