@@ -1,0 +1,12 @@
+[
+  {
+    "prodcut_id": 40,
+    "category_name": "초콜릿",
+    "product_name": "가나",
+    "price": 3000,
+    "stock": 1,
+    "thumbnail_image_url": "https://images.unsplash.com/photo-1610450949065-1f2841536c88?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y2hvY29sYXRlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60",
+    "image_url": "https://images.unsplash.com/photo-1610450949065-1f2841536c88?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y2hvY29sYXRlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60",
+    "create_at": "2022년 06월 07일"
+  }
+]
