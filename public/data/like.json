@@ -1,0 +1,32 @@
+[
+  {
+    "product_id": 11,
+    "category_name": "초콜릿",
+    "product_name": "미니쉘",
+    "price": 2500,
+    "quantity": 2,
+    "thumnail_url": "https://image.shutterstock.com/image-photo/close-chocolate-bar-isolated-on-600w-524456035.jpg",
+    "stock": 50,
+    "user_id": 8
+  },
+  {
+    "product_Id": 22,
+    "category_name": "초콜릿",
+    "product_name": "리얼100퍼센트",
+    "price": 3000,
+    "quantity": 4,
+    "thumnail_url": "https://image.shutterstock.com/image-photo/close-chocolate-bar-isolated-on-600w-524456035.jpg",
+    "stock": 50,
+    "user_id": 8
+  },
+  {
+    "product_Id": 33,
+    "category_name": "초콜릿",
+    "product_name": "허쉬",
+    "price": 5000,
+    "quantity": 5,
+    "thumnail_url": "https://image.shutterstock.com/image-photo/close-chocolate-bar-isolated-on-600w-524456035.jpg",
+    "stock": 10,
+    "user_id": 8
+  }
+]
