@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Constant from '../../commons/Constant';
 import './SignUp.scss';
 
 interface UserInfo {
@@ -11,8 +12,6 @@ interface UserInfo {
 
 function SignUp() {
   const navigate = useNavigate();
-
-  const PW_VALIDATION = /(?=.*[a-zA-ZS])(?=.*?[#?!@$%^&*-]).{8,}/;
 
   const [inputValue, setInputValue] = useState({
     email: '',
@@ -29,7 +28,7 @@ function SignUp() {
 
   const { email, password, name, address } = inputValue;
 
-  const isPwValid = PW_VALIDATION.test(password);
+  const isPwValid = Constant.SIGNUP.PW_VALIDATION.test(password);
 
   const checkDuplicate = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
@@ -45,12 +44,12 @@ function SignUp() {
     })
       .then(response => response.json())
       .then(data => {
-        if (data.message === 'ACCESS_SUCCESS') {
-          alert('사용 가능한 이메일입니다.');
-          setIsCheckEmail(true);
-        } else if (data.message === 'KEY_ALREADY_EXISTS') {
-          alert('이미 사용중인 이메일입니다.');
-          setIsCheckEmail(false);
+        if (data.message === Constant.SIGNUP.EMAIL_SUCCESS.MESSAGE) {
+          alert(Constant.SIGNUP.EMAIL_SUCCESS.ALERT);
+          setIsCheckEmail(prev => !prev);
+        }
+        if (data.message === Constant.SIGNUP.EMAIL_ERROR.MESSAGE) {
+          alert(Constant.SIGNUP.EMAIL_ERROR.ALERT);
         }
       });
   };
@@ -59,7 +58,7 @@ function SignUp() {
     e.preventDefault();
 
     if (!isCheckEmail) {
-      alert('이메일 중복을 확인해주세요.');
+      alert(Constant.SIGNUP.EMAIL_ERROR.ALERT);
       return;
     }
 
@@ -77,15 +76,12 @@ function SignUp() {
     })
       .then(response => response.json())
       .then(data => {
-        if (data.message === 'SIGN_UP_SUCCESS') {
-          alert('회원가입 성공!');
-          navigate('/login');
-        } else if (data.message === 'INVALID_PASSWORD') {
-          alert(
-            '영문(대소문자)과 특수문자를 포함한 8자리 이상의 비밀번호를 작성해주세요.',
-          );
-        } else {
-          alert('회원가입 실패!');
+        if (data.message === Constant.SIGNUP.SIGNUP_SUCCESS.MESSAGE) {
+          alert(Constant.SIGNUP.SIGNUP_SUCCESS.ALERT);
+          navigate('/signin');
+        }
+        if (data.message === Constant.SIGNUP.INVALID_PASSWORD.MESSAGE) {
+          alert(Constant.SIGNUP.INVALID_PASSWORD.ALERT);
         }
       });
   };
