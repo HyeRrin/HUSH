@@ -1,7 +1,21 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-function DetailTopInfo({ name, price, stock, category_name, image_url }) {
+interface ProductDataType {
+  category_name: string;
+  product_name: string;
+  price: number;
+  stock: number;
+  image_url: string;
+}
+
+function DetailTopInfo({
+  category_name,
+  product_name,
+  price,
+  stock,
+  image_url,
+}: ProductDataType) {
   const [number, setNumber] = useState(1);
 
   const onIncrease = () => {
@@ -25,8 +39,9 @@ function DetailTopInfo({ name, price, stock, category_name, image_url }) {
     setNumber(number - 1);
   };
 
-  const handleChange = e => {
-    setNumber(e.target.value);
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const targetValue = Number(e.target.value);
+    setNumber(targetValue);
   };
 
   const calculatePrice = number * price;
@@ -34,14 +49,18 @@ function DetailTopInfo({ name, price, stock, category_name, image_url }) {
   return (
     <>
       <div className="detail-prd-img">
-        <span>{/* <img src={image_url[0]} alt="" /> */}</span>
+        <span>
+          <img src={image_url} alt="" />
+        </span>
       </div>
       <div className="detail-prd-info">
         <div className="thumb">
-          <span>{/* <img src={image_url[1]} alt="" /> */}</span>
+          <span>
+            <img src={image_url} alt="" />
+          </span>
         </div>
         <div className="detail-prd-names">
-          <h2 className="prd-tit-name">{name}</h2>
+          <h2 className="prd-tit-name">{product_name}</h2>
           <p className="prd-cat-name">{category_name}</p>
         </div>
         <div className="prd-price-box">
