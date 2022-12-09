@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import ProductList from './ProductList';
+import Product from './Product';
 import Dropdown from './ProductDropdown';
-import './Product.scss';
+import './ProductList.scss';
 
 const TAB_LIST = ['all', '초콜릿', '캔디', '쿠키', '젤리', '케이크'];
 
-function Product() {
+function ProductList() {
   const [currTab, setCurrTab] = useState('all');
   const [productLists, setProductLists] = useState<any[]>([]);
   const [dropdownMenu, setDropDownMenu] = useState(false);
@@ -121,7 +121,7 @@ function Product() {
           {productLists.map(product => {
             return (
               <div className="detail-product-outer-cont" key={product.id}>
-                <ProductList {...product} />
+                <Product {...product} />
               </div>
             );
           })}
@@ -146,4 +146,4 @@ function Product() {
   );
 }
 
-export default Product;
+export default ProductList;

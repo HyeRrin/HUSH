@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Login.scss';
+import './SignIn.scss';
 
-function Login() {
+function SignIn() {
   const navigate = useNavigate();
 
   const [inputValue, setInputValue] = useState({
@@ -88,4 +88,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default SignIn;

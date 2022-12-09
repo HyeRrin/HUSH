@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './ProductList.scss';
+import './Product.scss';
 
-interface ProductLists {
+interface ProductType {
   id: number;
   name: string;
   price: number;
@@ -11,7 +11,7 @@ interface ProductLists {
   category_name: string;
 }
 
-function ProductList(product: ProductLists) {
+function Product(product: ProductType) {
   // eslint-disable-next-line @typescript-eslint/naming-convention
   const { id, stock, name, thumbnail_image_url, price, category_name } =
     product;
@@ -42,4 +42,4 @@ function ProductList(product: ProductLists) {
   );
 }
 
-export default ProductList;
+export default Product;

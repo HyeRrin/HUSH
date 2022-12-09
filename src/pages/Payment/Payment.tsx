@@ -3,9 +3,9 @@ import { useLocation } from 'react-router-dom';
 import OrderInfo from './OrderInfo';
 import ProductInfo from './ProductInfo';
 import TotalOrder from './TotalOrder';
-import './PayPage.scss';
+import './Payment.scss';
 
-function PayPage() {
+function Payment() {
   const requestHeaders: HeadersInit = new Headers();
   const accessToken = localStorage.getItem('accessToken');
   requestHeaders.set('authorization', accessToken || 'Token not found');
@@ -96,4 +96,4 @@ function PayPage() {
   );
 }
 
-export default PayPage;
+export default Payment;

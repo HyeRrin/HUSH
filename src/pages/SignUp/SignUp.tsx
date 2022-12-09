@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Join.scss';
+import './SignUp.scss';
 
 interface UserInfo {
   email: string;
@@ -9,7 +9,7 @@ interface UserInfo {
   address: string;
 }
 
-function Join() {
+function SignUp() {
   const navigate = useNavigate();
 
   const PW_VALIDATION = /(?=.*[a-zA-ZS])(?=.*?[#?!@$%^&*-]).{8,}/;
@@ -161,4 +161,4 @@ function Join() {
   );
 }
 
-export default Join;
+export default SignUp;

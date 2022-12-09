@@ -2,15 +2,15 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Nav from './components/nav/Nav';
 import Footer from './components/footer/Footer';
-import Join from './pages/Join/Join';
-import Detail from './pages/detailPage/Detail';
-import Login from './pages/Login/Login';
-import PayPage from './pages/payPage/PayPage';
-import Product from './pages/ProductPage/Product';
-import Main from './pages/main/Main';
+import SignUp from './pages/SignUp/SignUp';
+import SignIn from './pages/SignIn/SignIn';
+import Main from './pages/Main/Main';
+import ProductList from './pages/ProductList/ProductList';
+import Detail from './pages/ProductDetail/Detail';
+import Payment from './pages/Payment/Payment';
 import Cart from './pages/Cart/Cart';
-import ScrollToTop from './ScrollToTop';
 import Like from './pages/Like/Like';
+import ScrollToTop from './ScrollToTop';
 
 function Router() {
   return (
@@ -18,12 +18,12 @@ function Router() {
       <Nav />
       <ScrollToTop />
       <Routes>
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/signin" element={<SignIn />} />
         <Route path="/" element={<Main />} />
-        <Route path="/join" element={<Join />} />
+        <Route path="/productlist" element={<ProductList />} />
         <Route path="/detail/:id" element={<Detail />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/paypage" element={<PayPage />} />
-        <Route path="/product" element={<Product />} />
+        <Route path="/payment" element={<Payment />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/like" element={<Like />} />
       </Routes>
