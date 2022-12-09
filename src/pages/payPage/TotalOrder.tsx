@@ -47,7 +47,7 @@ function TotalOrder({
   return (
     <>
       <div className="payment-wrap">
-        <h2 className="pay-info">결제 정보</h2>ㅔ
+        <h2 className="pay-info">결제 정보</h2>
         <div className="payment-box">
           <p className="box-start">합계</p>
           <strong>₩{totalData}</strong>
