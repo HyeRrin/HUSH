@@ -2,7 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import NavModal from './NavModal';
 import './Nav.scss';
+
 const loginImg = ['/images/Nav/loginClick.png', '/images/Nav/login.png'];
+
+interface PointType {
+  [key: string]: number | null;
+}
 
 function Nav() {
   const location = useLocation();
@@ -28,7 +33,7 @@ function Nav() {
   };
 
   const [pointInput, setPointInput] = useState({});
-  const { point } = pointInput;
+  const { point }: PointType = pointInput;
 
   useEffect(() => {
     fetch('http://192.168.87.223:3001/user/point', {
@@ -44,7 +49,7 @@ function Nav() {
   return (
     <div className="nav-wrap">
       <div className="nav-aside">
-        <p>2022 갓혜린 에디션 입고 알림 OPEN!!</p>
+        <p>23SS HUSH 에디션 입고 알림 OPEN!</p>
       </div>
       <div className="nav-body">
         <div className="nav-body-left">
@@ -78,6 +83,7 @@ function Nav() {
           <li>
             <a href="#!">
               <img
+                role="presentation"
                 onClick={showSearchToggle}
                 className="search-modal-btn"
                 src="/images/Nav/search.png"
@@ -102,9 +108,12 @@ function Nav() {
               }}
             >
               <img
+                role="presentation"
                 className="login-page-btn"
                 onMouseOver={() => setIsMenuImg(true)}
+                onFocus={() => setIsMenuImg(true)}
                 onMouseOut={() => setIsMenuImg(false)}
+                onBlur={() => setIsMenuImg(false)}
                 onClick={menuModalToggle}
                 src={isMenuImg ? loginImg[0] : loginImg[1]}
                 alt="텝메뉴"
