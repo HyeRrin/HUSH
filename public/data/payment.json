@@ -1,0 +1,24 @@
+[
+  {
+    "pId": 11,
+    "cateName": "초콜릿",
+    "pName": "미니쉘",
+    "price": 2500,
+    "quantity": 2,
+    "url": "https://image.shutterstock.com/image-photo/close-chocolate-bar-isolated-on-600w-524456035.jpg",
+    "checkBox": 0,
+    "pStock": 50,
+    "uId": 8
+  },
+  {
+    "pId": 33,
+    "cateName": "초콜릿",
+    "pName": "허쉬",
+    "price": 5000,
+    "quantity": 5,
+    "url": "https://image.shutterstock.com/image-photo/close-chocolate-bar-isolated-on-600w-524456035.jpg",
+    "checkBox": 0,
+    "pStock": 10,
+    "uId": 8
+  }
+]
