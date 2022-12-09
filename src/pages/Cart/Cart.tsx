@@ -1,7 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import CartProduct from './CartProduct';
+import CartTable from './CartTable';
 import './Cart.scss';
+
+interface ProductData {
+  pId: any;
+  cateName: string;
+  pName: string;
+  price: number;
+  quantity: number;
+  url: string;
+  checkBox: number;
+  pStock: number;
+  uId: Number;
+}
 
 function Cart() {
   const requestHeaders: HeadersInit = new Headers();
@@ -11,18 +23,6 @@ function Cart() {
   const navigate = useNavigate();
   const [productData, setProductData] = useState<ProductData[]>([]);
   const [checkedList, setCheckedList] = useState<number[]>([]);
-
-  interface ProductData {
-    pId: any;
-    cateName: string;
-    pName: string;
-    price: number;
-    quantity: number;
-    url: string;
-    checkBox: number;
-    pStock: number;
-    uId: Number;
-  }
 
   useEffect(() => {
     fetch('/data/cart.json', {
@@ -113,44 +113,13 @@ function Cart() {
     <div className="cart">
       <h1 className="cart-title">장바구니</h1>
       <div className="cart-subTitle">일반배송</div>
-      <table className="cart-product">
-        <thead className="cart-product-head">
-          <tr>
-            <th>
-              <input
-                className="head-checkbox"
-                type="checkbox"
-                id="checkbox"
-                checked={checkedList.length === productData.length}
-                onChange={handleAllChecked}
-              />
-              <label htmlFor="checkbox" />
-            </th>
-            <th className="head-text-info">제품 정보</th>
-            <th className="head-text">수량</th>
-            <th className="head-text">금액</th>
-            <th className="head-text-total">합계금액</th>
-          </tr>
-        </thead>
-        <tbody className="cart-product-body">
-          {productData.map(product => (
-            <CartProduct
-              setProductData={setProductData}
-              accessToken={accessToken}
-              key={product.pId}
-              id={product.pId}
-              img={product.url}
-              name={product.pName}
-              category={product.cateName}
-              quantity={product.quantity}
-              price={product.price}
-              stock={product.pStock}
-              handleSingleChecked={handleSingleChecked}
-              checkedList={checkedList}
-            />
-          ))}
-        </tbody>
-      </table>
+      <CartTable
+        productData={productData}
+        setProductData={setProductData}
+        checkedList={checkedList}
+        handleSingleChecked={handleSingleChecked}
+        handleAllChecked={handleAllChecked}
+      />
       {productData.length < 1 && (
         <div className="product-empty">
           <img className="empty-img" src="/images/like/sad.png" alt="아이콘" />
