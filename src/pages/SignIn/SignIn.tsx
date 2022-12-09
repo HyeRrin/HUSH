@@ -76,7 +76,7 @@ function SignIn() {
       <p
         role="presentation"
         className="login-link-join"
-        onClick={() => navigate('/join')}
+        onClick={() => navigate('/signup')}
       >
         회원가입
       </p>
