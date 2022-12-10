@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CartTable from './CartTable';
+import CartCalculate from './CartCalculate';
 import './Cart.scss';
 
 interface ProductData {
@@ -135,8 +136,8 @@ function Cart() {
           선택 삭제
         </button>
       )}
-
-      <ul className="cart-calc">
+      <CartCalculate />
+      {/* <ul className="cart-calc">
         <li>
           <span className="calc-title">선택제품</span>
           <span className="calc-count">{checkedList.length} 개</span>
@@ -157,7 +158,7 @@ function Cart() {
             ₩ {totalPrice.toLocaleString('ko-KR')}
           </span>
         </li>
-      </ul>
+      </ul> */}
       <div>
         <button
           type="button"
