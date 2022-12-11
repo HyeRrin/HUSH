@@ -93,15 +93,6 @@ function Cart() {
     }
   };
 
-  let totalPrice = 0;
-  for (let i = 0; i < productData.length; i += 1) {
-    for (let j = 0; j < checkedList.length; j += 1) {
-      if (productData[i].pId === checkedList[j]) {
-        totalPrice += productData[i].price * productData[i].quantity;
-      }
-    }
-  }
-
   const orderProduct = () => {
     if (checkedList.length > 0) {
       navigate('/paypage', { state: { product_id: checkedList } });
@@ -136,29 +127,7 @@ function Cart() {
           선택 삭제
         </button>
       )}
-      <CartCalculate />
-      {/* <ul className="cart-calc">
-        <li>
-          <span className="calc-title">선택제품</span>
-          <span className="calc-count">{checkedList.length} 개</span>
-        </li>
-        <li>
-          <span className="calc-title">제품합계</span>
-          <span className="calc-sum">
-            ₩ {totalPrice.toLocaleString('ko-KR')}
-          </span>
-        </li>
-        <li className="title-wrap">
-          <span className="calc-title title-shift">배송비</span>
-          <span className="calc-sum">무료</span>
-        </li>
-        <li className="title-wrap">
-          <span className="calc-title title-price">주문금액</span>
-          <span className="calc-sum">
-            ₩ {totalPrice.toLocaleString('ko-KR')}
-          </span>
-        </li>
-      </ul> */}
+      <CartCalculate productData={productData} checkedList={checkedList} />
       <div>
         <button
           type="button"
