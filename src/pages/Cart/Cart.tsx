@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+
 import CartTable from './CartTable';
 import CartCalculate from './CartCalculate';
+import CartButtons from './CartButtons';
+import EmptyData from '../../components/EmptyData/EmptyData';
 import './Cart.scss';
 
 interface ProductData {
@@ -21,7 +23,6 @@ function Cart() {
   const accessToken = localStorage.getItem('accessToken');
   requestHeaders.set('authorization', accessToken || 'Token not found');
 
-  const navigate = useNavigate();
   const [productData, setProductData] = useState<ProductData[]>([]);
   const [checkedList, setCheckedList] = useState<number[]>([]);
 
@@ -93,14 +94,6 @@ function Cart() {
     }
   };
 
-  const orderProduct = () => {
-    if (checkedList.length > 0) {
-      navigate('/paypage', { state: { product_id: checkedList } });
-    } else {
-      alert('주문할 상품을 선택해주세요!');
-    }
-  };
-
   return (
     <div className="cart">
       <h1 className="cart-title">장바구니</h1>
@@ -112,12 +105,7 @@ function Cart() {
         handleSingleChecked={handleSingleChecked}
         handleAllChecked={handleAllChecked}
       />
-      {productData.length < 1 && (
-        <div className="product-empty">
-          <img className="empty-img" src="/images/like/sad.png" alt="아이콘" />
-          <p className="empty-text">아직 장바구니에 담긴 제품이 없네요!</p>
-        </div>
-      )}
+      {productData.length < 1 && <EmptyData content="장바구니" />}
       {productData.length > 0 && (
         <button
           type="button"
@@ -128,22 +116,7 @@ function Cart() {
         </button>
       )}
       <CartCalculate productData={productData} checkedList={checkedList} />
-      <div>
-        <button
-          type="button"
-          className="cart-btn shop-btn"
-          onClick={() => navigate('/main')}
-        >
-          쇼핑 계속하기
-        </button>
-        <button
-          type="button"
-          className="cart-btn pay-btn"
-          onClick={orderProduct}
-        >
-          주문하기
-        </button>
-      </div>
+      <CartButtons checkedList={checkedList} />
     </div>
   );
 }
