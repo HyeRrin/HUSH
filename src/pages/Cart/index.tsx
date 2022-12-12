@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import CartTable from './CartTable';
 import CartCalculate from './CartCalculate';
 import CartButtons from './CartButtons';
-import EmptyData from '../../components/EmptyData/EmptyData';
+import EmptyData from '../../components/EmptyData';
 
 interface ProductData {
   pId: any;
