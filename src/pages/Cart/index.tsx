@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-
+import styled from 'styled-components';
 import CartTable from './CartTable';
 import CartCalculate from './CartCalculate';
 import CartButtons from './CartButtons';
 import EmptyData from '../../components/EmptyData/EmptyData';
-import './Cart.scss';
 
 interface ProductData {
   pId: any;
@@ -95,7 +94,7 @@ function Cart() {
   };
 
   return (
-    <div className="cart">
+    <Style>
       <h1 className="cart-title">장바구니</h1>
       <div className="cart-subTitle">일반배송</div>
       <CartTable
@@ -117,8 +116,45 @@ function Cart() {
       )}
       <CartCalculate productData={productData} checkedList={checkedList} />
       <CartButtons checkedList={checkedList} />
-    </div>
+    </Style>
   );
 }
 
 export default Cart;
+
+const Style = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  .cart-title {
+    margin: 50px 0;
+    text-align: center;
+    font-size: 56px;
+    letter-spacing: -4px;
+  }
+
+  .cart-subTitle {
+    padding: 18px 504px;
+    display: inline-block;
+    background-color: #222;
+    font-weight: bold;
+    font-size: 16px;
+    color: white;
+  }
+
+  .cart-delete-btn {
+    margin: 15px 950px 0 0;
+    padding: 10px 20px;
+    border: 1px solid #222;
+    background-color: rgb(252, 252, 252);
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid #1ca14c;
+      background-color: #1ca14c;
+      color: white;
+    }
+  }
+`;
