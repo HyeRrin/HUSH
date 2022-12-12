@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
 
 interface CartButtonsProps {
   checkedList: number[];
@@ -17,7 +18,7 @@ function CartButtons({ checkedList }: CartButtonsProps) {
   };
 
   return (
-    <div>
+    <Style>
       <button
         type="button"
         className="cart-btn shop-btn"
@@ -25,11 +26,39 @@ function CartButtons({ checkedList }: CartButtonsProps) {
       >
         쇼핑 계속하기
       </button>
+      `
       <button type="button" className="cart-btn pay-btn" onClick={orderProduct}>
         주문하기
       </button>
-    </div>
+    </Style>
   );
 }
 
 export default CartButtons;
+
+const Style = styled.div`
+  .cart-btn {
+    margin: 30px 15px 100px 0;
+    padding: 20px 0;
+    width: 230px;
+    font-size: 16px;
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid #1ca14c;
+      background-color: #1ca14c;
+      color: white;
+    }
+  }
+
+  .shop-btn {
+    border: 1px solid #222;
+    background-color: rgb(252, 252, 252);
+  }
+
+  .pay-btn {
+    border: 1px solid #222;
+    background-color: #222;
+    color: white;
+  }
+`;
