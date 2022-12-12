@@ -1,17 +1,6 @@
 import React, { Dispatch, SetStateAction } from 'react';
 import styled from 'styled-components';
-
-interface ProductData {
-  pId: any;
-  cateName: string;
-  pName: string;
-  price: number;
-  quantity: number;
-  url: string;
-  checkBox: number;
-  pStock: number;
-  uId: Number;
-}
+import { CartProductType } from '../../types/types';
 
 interface CartProductProps {
   id: any;
@@ -23,7 +12,7 @@ interface CartProductProps {
   stock: number;
   handleSingleChecked: (e: React.ChangeEvent<HTMLInputElement>) => void;
   checkedList: number[];
-  setProductData: Dispatch<SetStateAction<ProductData[]>>;
+  setProductData: Dispatch<SetStateAction<CartProductType[]>>;
   accessToken: string | null;
 }
 

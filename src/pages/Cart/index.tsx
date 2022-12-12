@@ -4,25 +4,14 @@ import CartTable from './CartTable';
 import CartCalculate from './CartCalculate';
 import CartButtons from './CartButtons';
 import EmptyData from '../../components/EmptyData';
-
-interface ProductData {
-  pId: any;
-  cateName: string;
-  pName: string;
-  price: number;
-  quantity: number;
-  url: string;
-  checkBox: number;
-  pStock: number;
-  uId: Number;
-}
+import { CartProductType } from '../../types/types';
 
 function Cart() {
   const requestHeaders: HeadersInit = new Headers();
   const accessToken = localStorage.getItem('accessToken');
   requestHeaders.set('authorization', accessToken || 'Token not found');
 
-  const [productData, setProductData] = useState<ProductData[]>([]);
+  const [productData, setProductData] = useState<CartProductType[]>([]);
   const [checkedList, setCheckedList] = useState<number[]>([]);
 
   useEffect(() => {

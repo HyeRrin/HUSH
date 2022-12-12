@@ -1,21 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import CartProduct from './CartTableProduct';
-
-interface ProductData {
-  pId: any;
-  cateName: string;
-  pName: string;
-  price: number;
-  quantity: number;
-  url: string;
-  checkBox: number;
-  pStock: number;
-  uId: Number;
-}
+import { CartProductType } from '../../types/types';
 
 interface CartTableProps {
-  productData: ProductData[];
+  productData: CartProductType[];
   setProductData: any;
   checkedList: number[];
   handleSingleChecked: any;

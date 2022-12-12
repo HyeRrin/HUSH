@@ -88,6 +88,7 @@ const Styled = styled.ul`
     font-size: 22px;
     font-weight: bold;
   }
+
   .calc-sum {
     margin: 0 0 0 20px;
     font-size: 22px;
