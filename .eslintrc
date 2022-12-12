@@ -28,6 +28,7 @@
         "labelAttributes": ["htmlFor"]
       }
     ],
-    "prettier/prettier": ["error", { "endOfLine": "auto" }]
+    "prettier/prettier": ["error", { "endOfLine": "auto" }],
+    "@typescript-eslint/no-use-before-define": ["error", { "variables": false }]
   }
 }
