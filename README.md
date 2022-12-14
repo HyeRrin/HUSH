@@ -1,7 +1,11 @@
-<p align="center" style="font-size:30px; font-weight:bold">HUSH🍰</p>
-<p align="center" style="font-size:15px; font-weight:bold">달달한 디저트로 당충전하세요!</p>
+<div align="center">
 
-케이크, 초콜릿, 사탕 등 다양한 디저트를 판매하는 서비스, HUSH입니다. 회원가입 시 지급되는 1,000 POINT로 원하는 디저트를 장바구니에 담아 구매해보세요!
+<h2>HUSH🍰</h2>
+<h3>달달한 디저트로 당충전하세요!</h3>
+
+<p align="center">케이크, 초콜릿, 사탕 등 다양한 디저트를 판매하는 서비스, HUSH입니다. <br />회원가입 시 지급되는 1,000 POINT로 원하는 디저트를<br /> 장바구니에 담아 구매해보세요!</p>
+
+</div>
 
 <br>
 
