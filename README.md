@@ -1,3 +1,5 @@
+<br>
+
 <div align="center">
 
 <h3>🍰HUSH🍰</h3>
@@ -5,17 +7,17 @@
 
 <p align="center">케이크, 초콜릿, 사탕 등 다양한 디저트를 판매하는 서비스, HUSH입니다. <br />회원가입 시 지급되는 1,000 POINT로 원하는 디저트를<br /> 장바구니에 담아 구매해보세요!</p>
 
-</div>
-
-<br>
-
-### 🔨 기술
-
 ![react](https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB)
 ![SASS](https://img.shields.io/badge/Sass-CC6699?style=flat-square&logo=sass&logoColor=white)
 ![Styled Components](https://img.shields.io/badge/styled--components-DB7093?style=flat-square&logo=styled-components&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
 ![Redux](https://img.shields.io/badge/Redux-764ABC?style=flat-square&logo=redux&logoColor=white)
+
+</div>
+
+<br>
+
+---
 
 <br>
 
