@@ -1,27 +1,25 @@
-# HUSH
-케이크, 초콜릿, 사탕 등 다양한 디저트를 판매하는 서비스, HUSH입니다.
-회원가입하여 로그인하고 상품을 장바구니에 담아 구매할 수 있습니다.
+<p align="center" style="font-size:30px; font-weight:bold">HUSH🍰</p>
+<p align="center" style="font-size:15px; font-weight:bold">달달한 디저트로 당충전하세요!</p>
+
+케이크, 초콜릿, 사탕 등 다양한 디저트를 판매하는 서비스, HUSH입니다. 회원가입 시 지급되는 1,000 POINT로 원하는 디저트를 장바구니에 담아 구매해보세요!
 
 <br>
 
-## 기술
+## 🔨 기술
 
-- Front-end
+![react](https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB)
+![SASS](https://img.shields.io/badge/Sass-CC6699?style=flat-square&logo=sass&logoColor=white)
+![Styled Components](https://img.shields.io/badge/styled--components-DB7093?style=flat-square&logo=styled-components&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
+![Redux](https://img.shields.io/badge/Redux-764ABC?style=flat-square&logo=redux&logoColor=white)
 
-  - `React`
-  - `Sass`
-  - `TypeScript` (22/12/06부터 현재 개인적으로 TypeScript를 적용하여 리팩토링 중입니다.)
+<br>
 
-- Back-end
+## ♻ Refactoring
 
-  - `Node.js`
-  - `MySQL`
-  - `Express`
-
-- Business-tool
-  - `Slack`
-  - `Trello`
-  - `Notion`
+- `TypeScript`를 적용함으로써 명시적으로 Type을 지정합니다. 이를 통해 코드의 목적에 맞지 않는 변수와 함수에서 에러를 발생시켜 버그를 사전에 방지할 수 있도록 합니다.
+- `Redux`를 사용해 prop drilling을 방지해줍니다.
+- `React`컴포넌트의 재사용성을 고려하여 관심사를 분리합니다.
 
 <br>
 
@@ -37,37 +35,6 @@
 
 <br>
 
-## 구현 페이지
+## 구현 기능
 
-1. 회원가입
-   ![01 회원가입페이지](https://user-images.githubusercontent.com/103636274/193209653-b512b19d-d29d-452c-9c96-2481368a05d6.png)
-
-<br>
-
-2. 로그인
-   ![02 로그인페이지](https://user-images.githubusercontent.com/103636274/193209635-679cd55f-46de-40e2-a3bf-3176607cb6aa.png)
-
-<br>
-
-3. 메인페이지
-   ![00 메인페이지](https://user-images.githubusercontent.com/103636274/193209773-eff64389-f8ee-4e79-8675-bce5949ca537.png)
-
-<br>
-
-4. 상품목록 페이지
-   ![03 제품페이지](https://user-images.githubusercontent.com/103636274/193210036-623b9086-5f49-4ec1-80b6-32ee6f909552.png)
-
-<br>
-
-5. 상세페이지
-   ![05 상세페이지](https://user-images.githubusercontent.com/103636274/193210382-19a07f24-de21-4f8c-9af1-d97255b8aa04.png)
-
-<br>
-
-6. 장바구니 페이지
-   ![04 장바구니페이지](https://user-images.githubusercontent.com/103636274/193210694-ff098bd4-382a-46b5-9ef1-5131ed5da4a1.png)
-
-<br>
-
-7. 결제페이지
-   ![06 결제페이지](https://user-images.githubusercontent.com/103636274/193210671-471361cb-9d3b-4041-9a27-4cfe629cf0aa.png)
+준비 중입니다..
