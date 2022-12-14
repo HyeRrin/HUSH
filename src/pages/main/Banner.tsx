@@ -1,6 +1,7 @@
 import React from 'react';
+import styled from 'styled-components';
 import useScrollFadeIn from '../../hooks/useScrollFadeIn';
-import './Banner.scss';
+import '../../styles/variables.scss';
 
 function Banner() {
   interface AnimatedItem {
@@ -13,7 +14,7 @@ function Banner() {
   };
 
   return (
-    <div className="main-banner">
+    <BannerContainer>
       <div className="contain">
         <div className="banner-box" {...animatedItem[0]}>
           <div className="banner-img">
@@ -39,8 +40,50 @@ function Banner() {
           </div>
         </div>
       </div>
-    </div>
+    </BannerContainer>
   );
 }
 
 export default Banner;
+
+const BannerContainer = styled.div`
+  margin: 200px 0;
+
+  .contain {
+    width: 1200px;
+    margin: 0 auto;
+
+    .banner-box {
+      display: flex;
+      align-items: center;
+      height: 336px;
+      margin-bottom: 20px;
+
+      .banner-img {
+        position: relative;
+        width: 70%;
+        height: 100%;
+        overflow: hidden;
+
+        img {
+          @include imgSizeCover;
+        }
+      }
+
+      .banner-txt {
+        width: 30%;
+        padding: 0 20px;
+
+        h2 {
+          margin-bottom: 5px;
+          font-size: 30px;
+        }
+
+        p {
+          font-size: 16px;
+          line-height: 2em;
+        }
+      }
+    }
+  }
+`;

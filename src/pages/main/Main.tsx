@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import './Main.scss';
+import styled from 'styled-components';
 import Review from './Review';
 import Slider from './Slider';
 import Banner from './Banner';
@@ -44,14 +44,20 @@ function Main() {
   });
 
   return (
-    <div className="main-warpper">
+    <MainContainer>
       <div className="main-visual">
         <Slider sliders={sliders} slideRef={slideRef} count={counter} />
       </div>
       <Review />
       <Banner />
-    </div>
+    </MainContainer>
   );
 }
 
 export default Main;
+
+const MainContainer = styled.div`
+  .main-visual {
+    overflow: hidden;
+  }
+`;
