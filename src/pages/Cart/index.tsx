@@ -6,6 +6,7 @@ import CartCalculate from './CartCalculate';
 import CartButtons from './CartButtons';
 import EmptyData from '../../components/EmptyData';
 import { getData } from '../../store/slices';
+import { RootState } from '../../store';
 
 function Cart() {
   const dispatch = useDispatch();
@@ -13,7 +14,7 @@ function Cart() {
   const accessToken = localStorage.getItem('accessToken');
   requestHeaders.set('authorization', accessToken || 'Token not found');
 
-  const cartData = useSelector((state: any) => state.cart.value);
+  const cartData = useSelector((state: RootState) => state.cart.value);
   const [checkedList, setCheckedList] = useState<number[]>([]);
 
   useEffect(() => {
