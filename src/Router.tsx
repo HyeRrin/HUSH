@@ -9,7 +9,7 @@ import ProductList from './pages/ProductList/ProductList';
 import Detail from './pages/ProductDetail/Detail';
 import Payment from './pages/Payment/Payment';
 import Cart from './pages/Cart';
-import Like from './pages/Like/Like';
+import Like from './pages/Like';
 import ScrollToTop from './ScrollToTop';
 
 function Router() {
