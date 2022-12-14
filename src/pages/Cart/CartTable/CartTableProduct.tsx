@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
-import { getData } from '../../store/slices';
+import { getData } from '../../../store/slices';
 
 interface CartProductProps {
   id: any;
@@ -16,7 +16,7 @@ interface CartProductProps {
   accessToken: string | null;
 }
 
-function CartProduct({
+function CartTableProduct({
   id,
   img,
   name,
@@ -91,7 +91,7 @@ function CartProduct({
   };
 
   return (
-    <Style className="cart-product-content">
+    <Style>
       <td className="product-content-input">
         <input
           type="checkbox"
@@ -134,12 +134,10 @@ function CartProduct({
   );
 }
 
-export default CartProduct;
+export default CartTableProduct;
 
 const Style = styled.tr`
-  .cart-product-content {
-    border-bottom: 1px solid rgb(228, 227, 227);
-  }
+  border-bottom: 1px solid rgb(228, 227, 227);
 
   .product-content-input input {
     margin: 15px 10px 15px 20px;
