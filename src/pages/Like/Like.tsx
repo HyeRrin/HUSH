@@ -1,22 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import LikeProduct from './LikeProduct';
-import './Like.scss';
-
-interface ProductDataType {
-  product_id: number;
-  category_name: string;
-  product_name: string;
-  price: number;
-  quantity: number;
-  thumnail_url: string;
-}
+import styled from 'styled-components';
+import LikeTable from './LikeTable';
+import EmptyData from '../../components/EmptyData';
+import { LikeProductType } from '../../types/types';
 
 function Like() {
   const accessToken = localStorage.getItem('accessToken');
   const requestHeaders: HeadersInit = new Headers();
   requestHeaders.set('authorization', accessToken || 'Token not found');
 
-  const [productData, setProductData] = useState<ProductDataType[]>([]);
+  const [productData, setProductData] = useState<LikeProductType[]>([]);
   const [checkedList, setCheckedList] = useState<number[]>([]);
 
   const getData = () => {
@@ -42,24 +35,6 @@ function Like() {
   useEffect(() => {
     getData();
   }, []);
-
-  const handleSingleChecked = (id: any) => {
-    if (!checkedList.includes(id)) {
-      setCheckedList([...checkedList, id]);
-    } else {
-      setCheckedList(checkedList.filter(el => el !== Number(id)));
-    }
-  };
-
-  const handleAllChecked = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.checked) {
-      const newArr: number[] = [];
-      productData.forEach(el => newArr.push(el.product_id));
-      setCheckedList(newArr);
-    } else {
-      setCheckedList([]);
-    }
-  };
 
   const checkedQueryString = () => {
     let checkedProducts = '';
@@ -93,48 +68,14 @@ function Like() {
   };
 
   return (
-    <div className="like">
+    <LikeContainer>
       <h1 className="like-title">찜목록</h1>
-      <table className="like-product">
-        <thead className="like-product-head">
-          <tr>
-            <th>
-              <input
-                className="head-checkbox"
-                type="checkbox"
-                id="checkbox"
-                checked={checkedList.length === productData.length}
-                onChange={handleAllChecked}
-              />
-              <label htmlFor="checkbox" />
-            </th>
-            <th className="head-text-info">제품 정보</th>
-            <th className="head-text">금액</th>
-            <th className="head-text">선택</th>
-          </tr>
-        </thead>
-        <tbody className="like-product-body">
-          {productData.map(product => (
-            <LikeProduct
-              key={product.product_id}
-              img={product.thumnail_url}
-              name={product.product_name}
-              category={product.category_name}
-              price={product.price}
-              handleSingleChecked={() =>
-                handleSingleChecked(product.product_id)
-              }
-              {...checkedList}
-            />
-          ))}
-        </tbody>
-      </table>
-      {productData.length < 1 && (
-        <div className="product-empty">
-          <img className="empty-img" src="/images/like/sad.png" alt="아이콘" />
-          <p className="empty-text">아직 찜한 상품이 없네요!</p>
-        </div>
-      )}
+      <LikeTable
+        productData={productData}
+        checkedList={checkedList}
+        setCheckedList={setCheckedList}
+      />
+      {productData.length < 1 && <EmptyData content="찜목록" />}
       {productData.length > 0 && (
         <button
           type="button"
@@ -144,8 +85,35 @@ function Like() {
           선택 삭제
         </button>
       )}
-    </div>
+    </LikeContainer>
   );
 }
 
 export default Like;
+
+const LikeContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  .like-title {
+    margin: 80px 960px 50px 0;
+    font-size: 35px;
+    letter-spacing: -4px;
+  }
+
+  .like-delete-btn {
+    margin: 30px 950px 0 0;
+    padding: 10px 20px;
+    border: 1px solid #222;
+    background-color: rgb(252, 252, 252);
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid #1ca14c;
+      background-color: #1ca14c;
+      color: white;
+    }
+  }
+`;
