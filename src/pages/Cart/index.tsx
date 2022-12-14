@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
-import CartTable from './CartTable';
+import CartTable from './CartTable/CartTable';
 import CartCalculate from './CartCalculate';
 import CartButtons from './CartButtons';
 import EmptyData from '../../components/EmptyData';
