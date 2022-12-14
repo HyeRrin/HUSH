@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import LikeTableProduct from './LikeTableProduct';
 import LikeTableHead from './LikeTableHead';
-import { LikeProductType } from '../../types/types';
+import { LikeProductType } from '../../../types/types';
 
 interface LikeTableProps {
   checkedList: number[];

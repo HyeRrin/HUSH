@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import LikeTable from './LikeTable';
+import LikeTable from './LikeTable/LikeTable';
 import EmptyData from '../../components/EmptyData';
 import { LikeProductType } from '../../types/types';
 
