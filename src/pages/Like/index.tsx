@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import LikeTable from './LikeTable/LikeTable';
 import EmptyData from '../../components/EmptyData';
-import { LikeProductType } from '../../types/types';
+import { getLikeData } from '../../store/slices';
+import { RootState } from '../../store';
 
 function Like() {
+  const dispatch = useDispatch();
   const accessToken = localStorage.getItem('accessToken');
   const requestHeaders: HeadersInit = new Headers();
   requestHeaders.set('authorization', accessToken || 'Token not found');
 
-  const [productData, setProductData] = useState<LikeProductType[]>([]);
+  const likeData = useSelector((state: RootState) => state.like.value);
+  // const [productData, setProductData] = useState<LikeProductType[]>([]);
   const [checkedList, setCheckedList] = useState<number[]>([]);
 
   const getData = () => {
@@ -28,7 +32,8 @@ function Like() {
       })
       .then(data => {
         // setProductData(data.likes);
-        setProductData(data);
+        dispatch(getLikeData(data));
+        // setProductData(data);
       });
   };
 
@@ -70,13 +75,9 @@ function Like() {
   return (
     <LikeContainer>
       <h1 className="like-title">찜목록</h1>
-      <LikeTable
-        productData={productData}
-        checkedList={checkedList}
-        setCheckedList={setCheckedList}
-      />
-      {productData.length < 1 && <EmptyData content="찜목록" />}
-      {productData.length > 0 && (
+      <LikeTable checkedList={checkedList} setCheckedList={setCheckedList} />
+      {likeData.length < 1 && <EmptyData content="찜목록" />}
+      {likeData.length > 0 && (
         <button
           type="button"
           className="like-delete-btn"

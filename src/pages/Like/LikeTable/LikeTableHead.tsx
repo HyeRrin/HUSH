@@ -1,18 +1,16 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { LikeProductType } from '../../../types/types';
+import { RootState } from '../../../store';
 
 interface LikeTableHeadProps {
   checkedList: number[];
-  productData: LikeProductType[];
   handleAllChecked: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-function LikeTableHead({
-  checkedList,
-  productData,
-  handleAllChecked,
-}: LikeTableHeadProps) {
+function LikeTableHead({ checkedList, handleAllChecked }: LikeTableHeadProps) {
+  const likeData = useSelector((state: RootState) => state.like.value);
+
   return (
     <Style>
       <tr>
@@ -21,7 +19,7 @@ function LikeTableHead({
             className="head-checkbox"
             type="checkbox"
             id="checkbox"
-            checked={checkedList.length === productData.length}
+            checked={checkedList.length === likeData.length}
             onChange={handleAllChecked}
           />
           <label htmlFor="checkbox" />

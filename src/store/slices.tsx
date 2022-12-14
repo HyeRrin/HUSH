@@ -13,4 +13,17 @@ export const cartSlice = createSlice({
   },
 });
 
+export const likeSlice = createSlice({
+  name: 'like',
+  initialState: {
+    value: [],
+  },
+  reducers: {
+    getLikeData: (state, action) => {
+      state.value = action.payload;
+    },
+  },
+});
+
 export const { getData } = cartSlice.actions;
+export const { getLikeData } = likeSlice.actions;
