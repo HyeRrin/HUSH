@@ -1,24 +1,21 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import CartProduct from './CartTableProduct';
-import { CartProductType } from '../../types/types';
 
 interface CartTableProps {
-  productData: CartProductType[];
-  setProductData: any;
   checkedList: number[];
   handleSingleChecked: any;
   handleAllChecked: any;
 }
 
 function CartTable({
-  productData,
-  setProductData,
   checkedList,
   handleSingleChecked,
   handleAllChecked,
 }: CartTableProps) {
   const accessToken = localStorage.getItem('accessToken');
+  const cartData = useSelector((state: any) => state.cart.value);
 
   return (
     <Style className="cart-product">
@@ -29,7 +26,7 @@ function CartTable({
               className="head-checkbox"
               type="checkbox"
               id="checkbox"
-              checked={checkedList.length === productData.length}
+              checked={checkedList.length === cartData.length}
               onChange={handleAllChecked}
             />
             <label htmlFor="checkbox" />
@@ -41,9 +38,8 @@ function CartTable({
         </tr>
       </thead>
       <tbody>
-        {productData.map(product => (
+        {cartData.map((product: any) => (
           <CartProduct
-            setProductData={setProductData}
             accessToken={accessToken}
             key={product.pId}
             id={product.pId}

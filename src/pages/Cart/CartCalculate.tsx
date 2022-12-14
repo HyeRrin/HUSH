@@ -1,29 +1,18 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 
-interface ProductData {
-  pId: any;
-  cateName: string;
-  pName: string;
-  price: number;
-  quantity: number;
-  url: string;
-  checkBox: number;
-  pStock: number;
-  uId: Number;
-}
-
 interface CartCalculateProps {
-  productData: ProductData[];
   checkedList: number[];
 }
 
-function CartCalculate({ productData, checkedList }: CartCalculateProps) {
+function CartCalculate({ checkedList }: CartCalculateProps) {
+  const cartData = useSelector((state: any) => state.cart.value);
   let totalPrice = 0;
-  for (let i = 0; i < productData.length; i += 1) {
+  for (let i = 0; i < cartData.length; i += 1) {
     for (let j = 0; j < checkedList.length; j += 1) {
-      if (productData[i].pId === checkedList[j]) {
-        totalPrice += productData[i].price * productData[i].quantity;
+      if (cartData[i].pId === checkedList[j]) {
+        totalPrice += cartData[i].price * cartData[i].quantity;
       }
     }
   }

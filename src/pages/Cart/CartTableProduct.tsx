@@ -1,6 +1,7 @@
-import React, { Dispatch, SetStateAction } from 'react';
+import React from 'react';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
-import { CartProductType } from '../../types/types';
+import { getData } from '../../store/slices';
 
 interface CartProductProps {
   id: any;
@@ -12,7 +13,6 @@ interface CartProductProps {
   stock: number;
   handleSingleChecked: (e: React.ChangeEvent<HTMLInputElement>) => void;
   checkedList: number[];
-  setProductData: Dispatch<SetStateAction<CartProductType[]>>;
   accessToken: string | null;
 }
 
@@ -26,12 +26,13 @@ function CartProduct({
   stock,
   handleSingleChecked,
   checkedList,
-  setProductData,
   accessToken,
 }: CartProductProps) {
   const requestHeaders: HeadersInit = new Headers();
   requestHeaders.set('authorization', accessToken || 'Token not found');
   const totalSum: number = quantity * price;
+
+  const dispatch = useDispatch();
 
   const decreaseQuantity = () => {
     if (quantity <= 1) {
@@ -56,7 +57,7 @@ function CartProduct({
           alert(error);
         })
         .then(data => {
-          setProductData(data.result);
+          dispatch(getData(data.result));
         });
     }
   };
@@ -84,7 +85,7 @@ function CartProduct({
           alert(error);
         })
         .then(data => {
-          setProductData(data.result);
+          dispatch(getData(data.result));
         });
     }
   };
@@ -150,6 +151,7 @@ const Style = styled.tr`
     display: flex;
     align-items: center;
   }
+
   .content-detail-img {
     width: 100px;
     height: 100px;

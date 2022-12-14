@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import CartTable from './CartTable';
 import CartCalculate from './CartCalculate';
 import CartButtons from './CartButtons';
 import EmptyData from '../../components/EmptyData';
-import { CartProductType } from '../../types/types';
+import { getData } from '../../store/slices';
 
 function Cart() {
+  const dispatch = useDispatch();
   const requestHeaders: HeadersInit = new Headers();
   const accessToken = localStorage.getItem('accessToken');
   requestHeaders.set('authorization', accessToken || 'Token not found');
 
-  const [productData, setProductData] = useState<CartProductType[]>([]);
+  const cartData = useSelector((state: any) => state.cart.value);
   const [checkedList, setCheckedList] = useState<number[]>([]);
 
   useEffect(() => {
@@ -28,7 +30,7 @@ function Cart() {
         alert(error);
       })
       .then(data => {
-        setProductData(data);
+        dispatch(getData(data));
       });
   }, []);
 
@@ -43,7 +45,7 @@ function Cart() {
   const handleAllChecked = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.checked) {
       const allCheckedList: number[] = [];
-      productData.forEach(el => allCheckedList.push(el.pId));
+      cartData.forEach((el: any) => allCheckedList.push(el.pId));
       setCheckedList(allCheckedList);
     } else {
       setCheckedList([]);
@@ -74,7 +76,7 @@ function Cart() {
           alert(error);
         })
         .then(data => {
-          setProductData(data.result);
+          dispatch(getData(data.result));
         });
       setCheckedList([]);
     } else {
@@ -87,14 +89,12 @@ function Cart() {
       <h1 className="cart-title">장바구니</h1>
       <div className="cart-subTitle">일반배송</div>
       <CartTable
-        productData={productData}
-        setProductData={setProductData}
         checkedList={checkedList}
         handleSingleChecked={handleSingleChecked}
         handleAllChecked={handleAllChecked}
       />
-      {productData.length < 1 && <EmptyData content="장바구니" />}
-      {productData.length > 0 && (
+      {cartData.length < 1 && <EmptyData content="장바구니" />}
+      {cartData.length > 0 && (
         <button
           type="button"
           className="cart-delete-btn"
@@ -103,7 +103,7 @@ function Cart() {
           선택 삭제
         </button>
       )}
-      <CartCalculate productData={productData} checkedList={checkedList} />
+      <CartCalculate checkedList={checkedList} />
       <CartButtons checkedList={checkedList} />
     </Style>
   );
