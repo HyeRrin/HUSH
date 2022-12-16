@@ -11,7 +11,7 @@ function CartButtons({ checkedList }: CartButtonsProps) {
 
   const orderProduct = () => {
     if (checkedList.length > 0) {
-      navigate('/paypage', { state: { product_id: checkedList } });
+      navigate('/payment', { state: { product_id: checkedList } });
     } else {
       alert('주문할 상품을 선택해주세요!');
     }
