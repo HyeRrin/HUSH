@@ -21,7 +21,7 @@ function DetailTab() {
   const [currTab, setCurrTab] = useState<string>('제품정보');
 
   const TAB_CONTENT: TabContentType = {
-    제품정보: <DetailPrdInfo />,
+    제품정보: <h2 className="center">준비 중 입니다.</h2>,
     제품후기: <DetailPrdReview />,
     '배송/반품/교환 안내': <h2 className="center">준비 중 입니다.</h2>,
     '상품필수 정보': <h2 className="center">준비 중 입니다.</h2>,
