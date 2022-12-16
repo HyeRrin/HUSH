@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Constant from '../../commons/Constant';
+import Constant from '../../constant/Constant';
 
 interface ShippingProps {
   choiceMessages: (e: React.ChangeEvent<HTMLSelectElement>) => void;
