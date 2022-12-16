@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import DetailPrdInfo from './DetailPrdInfo';
 import DetailPrdReview from './DetailPrdReview';
 import './DetailTab.scss';
 
