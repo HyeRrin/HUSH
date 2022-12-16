@@ -52,7 +52,6 @@ function ProductList() {
 
   return (
     <section className="product">
-      <div className="product-nav">nav</div>
       <div className="product-pic">
         <img src="/images/cusCakes.jpg" alt="상품" />
         <div className="product-image-letter">
