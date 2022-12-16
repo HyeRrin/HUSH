@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import useScrollFadeIn from '../../hooks/useScrollFadeIn';
-import '../../styles/variables.scss';
 
 function Banner() {
   interface AnimatedItem {
