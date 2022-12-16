@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import '../../styles/variables.scss';
 
 interface SliderProps {
   sliders: any[];
@@ -31,7 +30,7 @@ function Slider({ sliders, slideRef, count }: SliderProps) {
           </div>
         ))}
       </div>
-      {/* <div className="main-pagination">
+      <div className="main-pagination">
         {sliders.map(btn => (
           <button
             type="button"
@@ -42,7 +41,7 @@ function Slider({ sliders, slideRef, count }: SliderProps) {
             {btn.text}
           </button>
         ))}
-      </div> */}
+      </div>
     </SliderContainer>
   );
 }
@@ -65,30 +64,37 @@ const SliderContainer = styled.div`
         box-sizing: border-box;
 
         img {
-          @include imgSizeCover;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
         }
       }
     }
   }
 
   .main-pagination {
-    @include flexCenter;
-    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
 
     .btn {
-      width: 10px;
-      height: 10px;
-      margin: 0 3px;
+      width: 15px;
+      height: 15px;
+      margin: 0 10px;
       border: 0;
       border-radius: 50%;
-      background: #000;
+      background: #b9b7b7;
       cursor: pointer;
       text-indent: -9999px;
       overflow: hidden;
 
       &.active {
-        width: 15px;
-        height: 15px;
+        background: #070707;
       }
     }
   }
