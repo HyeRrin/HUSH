@@ -1,43 +1,43 @@
 [
   {
     "id": 1,
-    "src": "./images/main/main_visual1.jpg",
+    "src": "./images/main/main_visual1.avif",
     "alt": "메인 슬라이드 이미지1",
     "text": "첫번째 슬라이드 버튼"
   },
   {
     "id": 2,
-    "src": "./images/main/main_visual2.jpg",
+    "src": "./images/main/main_visual2.avif",
     "alt": "메인 슬라이드 이미지2",
     "text": "두번째 슬라이드 버튼"
   },
   {
     "id": 3,
-    "src": "./images/main/main_visual3.jpg",
+    "src": "./images/main/main_visual3.avif",
     "alt": "메인 슬라이드 이미지3",
     "text": "세번째 슬라이드 버튼"
   },
   {
     "id": 4,
-    "src": "./images/main/main_visual1.jpg",
+    "src": "./images/main/main_visual1.avif",
     "alt": "메인 슬라이드 이미지4",
     "text": "네번째 슬라이드 버튼"
   },
   {
     "id": 5,
-    "src": "./images/main/main_visual2.jpg",
+    "src": "./images/main/main_visual2.avif",
     "alt": "메인 슬라이드 이미지5",
     "text": "다섯번째 슬라이드 버튼"
   },
   {
     "id": 6,
-    "src": "./images/main/main_visual3.jpg",
+    "src": "./images/main/main_visual3.avif",
     "alt": "메인 슬라이드 이미지6",
     "text": "여섯번째 슬라이드 버튼"
   },
   {
     "id": 7,
-    "src": "./images/main/main_visual2.jpg",
+    "src": "./images/main/main_visual2.avif",
     "alt": "메인 슬라이드 이미지7",
     "text": "일번째 슬라이드 버튼"
   }
