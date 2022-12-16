@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 
 interface TotalOrderType {
   isCheck: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -45,7 +46,7 @@ function TotalOrder({
   };
 
   return (
-    <>
+    <TotalOrderContainer>
       <div className="payment-wrap">
         <h2 className="pay-info">결제 정보</h2>
         <div className="payment-box">
@@ -58,17 +59,85 @@ function TotalOrder({
         </div>
       </div>
       <div className="pay-footer">
-        <label>
+        <div>
           <input type="checkbox" name="color" value="blue" onChange={isCheck} />
           <span>(필수)</span>구매하실 제품의 결제정보를 확인하였으며, 구매진행에
           동의합니다.
-        </label>
+        </div>
         <button type="button" disabled={!check} onClick={payBtn}>
           ₩ {totalData}원 결제하기
         </button>
       </div>
-    </>
+    </TotalOrderContainer>
   );
 }
 
 export default TotalOrder;
+
+const TotalOrderContainer = styled.div`
+  .payment-wrap {
+    width: 1630px;
+    margin-top: 20px;
+
+    h2 {
+      border-bottom: 1px solid rgba(0, 0, 0, 0);
+      margin-bottom: 20px;
+    }
+
+    .payment-box {
+      background: rgb(240, 239, 239);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 5px;
+      width: 1350px;
+      height: 80px;
+      margin: 0 auto;
+
+      p {
+        font-size: 30px;
+        margin-left: 150px;
+      }
+
+      .box-start {
+        margin-left: 20px;
+      }
+
+      strong {
+        font-size: 30px;
+        margin: 20px;
+      }
+
+      h3 {
+        font-size: 30px;
+        color: rgb(117, 178, 24);
+        margin-left: 20px;
+      }
+    }
+  }
+
+  .pay-footer {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 100px;
+    text-align: center;
+
+    span {
+      color: red;
+      margin-right: 2px;
+      font-size: 17px;
+    }
+
+    button {
+      margin: 0 auto;
+      background: rgb(34, 213, 46);
+      width: 500px;
+      height: 50px;
+      margin-top: 30px;
+      border: 1px solid rgba(0, 0, 0, 0);
+      color: white;
+      font-size: 18px;
+    }
+  }
+`;

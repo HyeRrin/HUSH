@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import OrderInfo from './OrderInfo';
+import styled from 'styled-components';
+import Shipping from './Shipping';
 import ProductInfo from './ProductInfo';
 import TotalOrder from './TotalOrder';
-import './Payment.scss';
+// import './Payment.scss';
 
 function Payment() {
   const requestHeaders: HeadersInit = new Headers();
@@ -58,7 +59,7 @@ function Payment() {
   }, []);
 
   return (
-    <div className="pay-wrap">
+    <PaymentContainer>
       <h1>주문/결제</h1>
       <div className="product-wrap">
         <h2>제품정보</h2>
@@ -76,7 +77,7 @@ function Payment() {
       </div>
       <div className="order-wrap">
         <h2>배송 정보</h2>
-        <OrderInfo
+        <Shipping
           choiceMessages={choiceMessages}
           inputMessages={inputMessages}
           isOrderInput={isOrderInput}
@@ -92,8 +93,67 @@ function Payment() {
         productData={productData}
         product_id={product_id}
       />
-    </div>
+    </PaymentContainer>
   );
 }
 
 export default Payment;
+
+const PaymentContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 80px;
+
+  h1 {
+    font-size: 50px;
+    margin: 0 auto;
+  }
+
+  h2 {
+    display: block;
+    margin: 0 auto;
+    margin-top: 50px;
+    width: 1330px;
+    font-size: 30px;
+    border-bottom: 1px solid rgb(142, 141, 141);
+  }
+
+  .product-wrap {
+    width: 1650px;
+    margin-top: 100px;
+  }
+  .orderer-wrap {
+    width: 1650px;
+    margin-top: 20px;
+
+    .orderer-info {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      width: 1330px;
+      height: 140px;
+      margin: 0 auto;
+      border-bottom: 1px solid black;
+
+      p {
+        font-size: 20px;
+        margin-left: 50px;
+      }
+
+      .orderer-match {
+        margin-left: 140px;
+
+        p {
+          margin: 5px;
+          font-size: 16px;
+        }
+      }
+    }
+  }
+
+  .order-wrap {
+    width: 1650px;
+    margin-top: 20px;
+  }
+`;

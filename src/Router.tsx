@@ -7,7 +7,7 @@ import SignIn from './pages/SignIn/SignIn';
 import Main from './pages/Main/Main';
 import ProductList from './pages/ProductList';
 import Detail from './pages/ProductDetail/Detail';
-import Payment from './pages/Payment/Payment';
+import Payment from './pages/Payment';
 import Cart from './pages/Cart';
 import Like from './pages/Like';
 import ScrollToTop from './ScrollToTop';

@@ -1,7 +1,8 @@
 import React from 'react';
+import styled from 'styled-components';
 import Constant from '../../commons/Constant';
 
-interface OrderInfoProps {
+interface ShippingProps {
   choiceMessages: (e: React.ChangeEvent<HTMLSelectElement>) => void;
   inputMessages: (e: React.ChangeEvent<HTMLInputElement>) => void;
   isOrderInput: boolean;
@@ -9,21 +10,21 @@ interface OrderInfoProps {
   address: string;
 }
 
-function OrderInfo({
+function Shipping({
   choiceMessages,
   isOrderInput,
   inputMessages,
   orderMessages,
   address,
-}: OrderInfoProps) {
+}: ShippingProps) {
   return (
-    <div className="order-info">
+    <ShippingContainer>
       <div className="order-address">
-        <strong>배송지</strong>
+        <p className="order-title">배송지</p>
         <p>{address}</p>
       </div>
       <div className="order-message">
-        <strong>배송메세지</strong>
+        <p className="order-title">배송메세지</p>
         <div className="order-choice-wrap">
           <select name="choice-message" onChange={choiceMessages}>
             {Constant.PAYMENT.SHIPPING.map(option => (
@@ -40,8 +41,45 @@ function OrderInfo({
           )}
         </div>
       </div>
-    </div>
+    </ShippingContainer>
   );
 }
 
-export default OrderInfo;
+export default Shipping;
+
+const ShippingContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 1330px;
+  height: 140px;
+  margin: 0 auto;
+  padding-left: 50px;
+  border-bottom: 1px solid black;
+
+  .order-title {
+    font-size: 20px;
+    margin-right: 10px;
+  }
+
+  .order-address {
+    display: flex;
+    margin-bottom: 20px;
+  }
+
+  .order-message {
+    display: flex;
+
+    .order-choice-wrap {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+
+      input {
+        position: relative;
+        top: 10px;
+      }
+    }
+  }
+`;
