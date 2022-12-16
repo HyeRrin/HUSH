@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import DetailTab from './DetailTab';
-import DetailTopInfo from './DetailTopInfo';
-import './Detail.scss';
+import styled from 'styled-components';
+import ProductDetailTab from './ProductDetailTab';
+import ProductDetailInfo from './ProductDetailInfo';
 
 interface ProductDataType {
   category_name: string;
@@ -12,7 +12,7 @@ interface ProductDataType {
   image_url: string;
 }
 
-function Detail() {
+function ProductDetail() {
   const accessToken = localStorage.getItem('accessToken');
   const requestHeaders: HeadersInit = new Headers();
   requestHeaders.set('authorization', accessToken || 'Token not found');
@@ -36,21 +36,23 @@ function Detail() {
   if (Object.keys(productData).length === 0) return <>loading...</>;
 
   return (
-    <div className="detail-content">
-      <div className="detail-wrap">
-        <DetailTopInfo
-          category_name={productData[0].category_name}
-          product_name={productData[0].product_name}
-          price={productData[0].price}
-          stock={productData[0].stock}
-          image_url={productData[0].image_url}
-        />
-      </div>
-      <div className="prd-detail">
-        <DetailTab />
-      </div>
-    </div>
+    <ProductDetailContainer>
+      <ProductDetailInfo
+        category_name={productData[0].category_name}
+        product_name={productData[0].product_name}
+        price={productData[0].price}
+        stock={productData[0].stock}
+        image_url={productData[0].image_url}
+      />
+      <ProductDetailTab />
+    </ProductDetailContainer>
   );
 }
 
-export default Detail;
+export default ProductDetail;
+
+const ProductDetailContainer = styled.div`
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+`;

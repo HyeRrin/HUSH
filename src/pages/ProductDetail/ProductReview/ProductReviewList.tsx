@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import './DetailReviewList.scss';
 
 function DetailReviewList({ content }: any) {
   const [userEmail, setUserEmail] = useState('rkdfnql22@naver.com');
@@ -35,7 +34,7 @@ function DetailReviewList({ content }: any) {
   const dateStr = `${year} - ${month} - ${day}`;
 
   return (
-    <div>
+    <>
       {content.map((item: string) => {
         return (
           <li key={item}>
@@ -49,7 +48,7 @@ function DetailReviewList({ content }: any) {
           </li>
         );
       })}
-    </div>
+    </>
   );
 }
 
