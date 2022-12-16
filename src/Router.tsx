@@ -5,7 +5,7 @@ import Footer from './components/footer/Footer';
 import SignUp from './pages/SignUp/SignUp';
 import SignIn from './pages/SignIn/SignIn';
 import Main from './pages/Main/Main';
-import ProductList from './pages/ProductList/ProductList';
+import ProductList from './pages/ProductList';
 import Detail from './pages/ProductDetail/Detail';
 import Payment from './pages/Payment/Payment';
 import Cart from './pages/Cart';
