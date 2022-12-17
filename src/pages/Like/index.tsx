@@ -1,45 +1,22 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import LikeTable from './LikeTable/LikeTable';
 import EmptyData from '../../components/EmptyData';
-import { getLikeData } from '../../store/slices';
 import { RootState } from '../../store';
+import useFetch from '../../hooks/useFetch';
 
 function Like() {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const accessToken = localStorage.getItem('accessToken');
   const requestHeaders: HeadersInit = new Headers();
   requestHeaders.set('authorization', accessToken || 'Token not found');
 
   const likeData = useSelector((state: RootState) => state.like.value);
-  // const [productData, setProductData] = useState<LikeProductType[]>([]);
   const [checkedList, setCheckedList] = useState<number[]>([]);
 
-  const getData = () => {
-    // fetch('http://172.20.10.4:3000/user/like', {
-    fetch('./data/like.json', {
-      headers: requestHeaders,
-    })
-      .then(response => {
-        if (response.ok) {
-          return response.json();
-        }
-        throw new Error('에러 발생!');
-      })
-      .catch(error => {
-        alert(error);
-      })
-      .then(data => {
-        // setProductData(data.likes);
-        dispatch(getLikeData(data));
-        // setProductData(data);
-      });
-  };
-
-  useEffect(() => {
-    getData();
-  }, []);
+  useFetch('./data/like.json', 'like');
+  // useFetch('http://172.20.10.4:3000/user/like', 'like');
 
   const checkedQueryString = () => {
     let checkedProducts = '';
@@ -60,7 +37,7 @@ function Like() {
       )
         .then(response => {
           if (response.ok) {
-            getData();
+            // getData();
           }
           throw new Error('에러 발생!');
         })

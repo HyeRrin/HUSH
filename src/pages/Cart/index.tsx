@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import CartTable from './CartTable/CartTable';
@@ -7,6 +7,7 @@ import CartButtons from './CartButtons';
 import EmptyData from '../../components/EmptyData';
 import { getData } from '../../store/slices';
 import { RootState } from '../../store';
+import useFetch from '../../hooks/useFetch';
 
 function Cart() {
   const dispatch = useDispatch();
@@ -17,23 +18,7 @@ function Cart() {
   const cartData = useSelector((state: RootState) => state.cart.value);
   const [checkedList, setCheckedList] = useState<number[]>([]);
 
-  useEffect(() => {
-    fetch('/data/cart.json', {
-      headers: requestHeaders,
-    })
-      .then(response => {
-        if (response.ok) {
-          return response.json();
-        }
-        throw new Error('에러 발생!');
-      })
-      .catch(error => {
-        alert(error);
-      })
-      .then(data => {
-        dispatch(getData(data));
-      });
-  }, []);
+  useFetch('/data/cart.json', 'cart');
 
   const handleSingleChecked = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.checked) {
