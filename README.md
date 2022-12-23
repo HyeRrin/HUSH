@@ -52,8 +52,7 @@
 
 ### `Sass` + `styled-components`
 
-<img src="https://user-images.githubusercontent.com/93499154/209255676-7706f7c0-b53e-4d38-a4ff-c1d8d21b4745.png" width="100" style="display:inline-block">
-<img src="https://user-images.githubusercontent.com/93499154/208901425-d5ce739f-f867-4cd9-8090-048b2575096f.png" width="100" style="display:inline-block">
+<img src="https://user-images.githubusercontent.com/93499154/209261598-34d8ea3c-4e83-458b-a7d5-d547cd858118.png" width="200" >
 
 - `SCSS`는 `CSS`가 지원하지 않는 유용한 기능을 지원하기 때문에 적용하였습니다. 유용한 기능에는 Nesting(선택자 중첩), 변수의 사용등이 있겠습니다.
 - 여기에 CSS-in-JS 방식을 통해 CSS, SCSS파일을 생성하지 않고도 해당 컴포넌트에 바로 스타일을 삽입할 수 있는 `styled-componets`를 추가적으로 적용해주었습니다.
