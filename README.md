@@ -100,7 +100,7 @@
 
 [![Velog's GitHub stats](https://velog-readme-stats.vercel.app/api?name=hye_rin&slug=허쉬-프로젝트-회고록&color=dark)](https://velog.io/@hye_rin/%ED%97%88%EC%89%AC-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%ED%9A%8C%EA%B3%A0%EB%A1%9D)
 
-### ❓ TypeScipt 공부
+### ❓ TypeScript 공부
 
 [![Velog's GitHub stats](https://velog-readme-stats.vercel.app/api?name=hye_rin&slug=TypeScript-타입스크립트를-사용하는-이유는-뭘까&color=dark)](https://velog.io/@hye_rin/TypeScript-%ED%83%80%EC%9E%85%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94-%EC%9D%B4%EC%9C%A0%EB%8A%94-%EB%AD%98%EA%B9%8C)
 
